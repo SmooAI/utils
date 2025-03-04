@@ -1,0 +1,43 @@
+{
+    "name": "@smooai/utils",
+    "version": "0.0.0",
+    "main": "./dist/index.js",
+    "repository": {
+        "url": "https://github.com/SmooAI/utils"
+    },
+    "license": "MIT",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/**"
+    ],
+    "scripts": {
+        "build": "pnpm createEntryPoints && pnpm dlx cross-env tsup",
+        "createEntryPoints": "npx vite-node ./src/scripts/createEntryPoints.ts -i \"src/**/*.ts\"",
+        "lint": "eslint src/",
+        "lint:fix": "eslint src/ --fix",
+        "test": "vitest run --passWithNoTests",
+        "typecheck": "tsc --noEmit --skipLibCheck",
+        "watch": "tsup --watch"
+    },
+    "dependencies": {
+        "@oclif/core": "^2.0.0",
+        "@smooai/logger": "workspace:*",
+        "find-up": "^7.0.0",
+        "hono": "^4.7.2",
+        "http-status-codes": "^2.3.0",
+        "libphonenumber-js": "^1.12.4",
+        "zod": "^3.24.2",
+        "zod-validation-error": "^3.4.0"
+    },
+    "devDependencies": {
+        "@smooai/config-eslint": "workspace:*",
+        "@smooai/config-typescript": "workspace:*",
+        "@types/aws-lambda": "^8.10.119",
+        "@types/node": "^20.13.0",
+        "glob": "^10.3.10",
+        "tsup": "^8.4.0",
+        "vite": "^5.4.14",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitest": "^3.0.7"
+    }
+}
