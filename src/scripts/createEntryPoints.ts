@@ -25,7 +25,9 @@ export default class UpdateTsupConfig extends Command {
     async run() {
         const { flags } = await this.parse(UpdateTsupConfig);
         const includePatterns = flags.include;
-        const ignorePatterns = flags.ignore || [];
+        // Add test files and .d.ts files to ignore patterns
+        const defaultIgnore = ['**/*.spec.ts', '**/*.test.ts', '**/*.d.ts'];
+        const ignorePatterns = [...defaultIgnore, ...(flags.ignore || [])];
 
         try {
             const files = globSync(includePatterns, { ignore: ignorePatterns });
