@@ -3,7 +3,11 @@
     "version": "0.0.0",
     "main": "./dist/index.js",
     "repository": {
+<<<<<<< HEAD
         "url": "https://github.com/SmooAI/utils.git"
+=======
+        "url": "https://github.com/SmooAI/utils"
+>>>>>>> 671d201af98ac7e3cbb2cd3334a53c0b92d16c2b
     },
     "license": "MIT",
     "types": "./dist/index.d.ts",
@@ -17,8 +21,12 @@
         "lint:fix": "eslint src/ --fix",
         "test": "vitest run --passWithNoTests",
         "typecheck": "tsc --noEmit --skipLibCheck",
+<<<<<<< HEAD
         "watch": "tsup --watch",
         "check-all": " pnpm run typecheck && pnpm run lint && pnpm run test"
+=======
+        "watch": "tsup --watch"
+>>>>>>> 671d201af98ac7e3cbb2cd3334a53c0b92d16c2b
     },
     "dependencies": {
         "@oclif/core": "^2.0.0",
