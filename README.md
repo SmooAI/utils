@@ -31,120 +31,63 @@
 
 ## About SmooAI
 
-SmooAI is a platform for building and deploying AI-powered apps.
+SmooAI is an AI-powered platform for helping businesses multiply their customer, employee, and developer experience.
 
 Learn more on [smoo.ai](https://smoo.ai)
 
-This repository, among other things, contains parts that power:
+## SmooAI Packages
 
--   [SmooAI Marketing Page](https://smoo.ai)
--   [SmooAI Apps](https://apps.smoo.ai)
+Check out other SmooAI packages at [npmjs.com/org/smooai](https://www.npmjs.com/org/smooai)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## About @smooai/utils
 
-### Built With
+A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.
 
--   [![sst][sst]][sst-url]
--   [![next][next]][next-url]
--   [![aws][aws]][aws-url]
--   [![tailwindcss][tailwindcss]][tailwindcss-url]
--   [![zod][zod]][zod-url]
--   [![sanity][sanity]][sanity-url]
--   [![vitest][vitest]][vitest-url]
--   [![pnpm][pnpm]][pnpm-url]
--   [![turborepo][turborepo]][turborepo-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-SmooAI is powered by a monorepo built using [PNPM Workspaces](https://pnpm.io/workspaces) and [Turborepo](https://turbo.build/).
-
-It contains [SST](https://sst.dev) apps hosted on AWS. It contains [Next.js](next-url) web apps.
-
-### Getting AWS Access
-
-Contact [Brent Rager](brent@smoo.ai)
-
-### Install
+### Installation
 
 ```sh
-pnpm install
+pnpm add @smooai/utils
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Available Utilities
 
-### Using PNPM
+#### API Handling
+- `ApiError` - Custom error class for handling API-specific errors with status codes
+- `apiHandler` - Lambda function wrapper for standardized API error handling and responses
+- `createAwsLambdaHonoApp` - Factory for creating Hono apps configured for AWS Lambda
 
-We use [PNPM](https://pnpm.io/) as our package manager. It's a drop-in replacement for NPM/Yarn that provides a few benefits:
+#### Collections
+- `CaseInsensitiveMap` - Map implementation with case-insensitive string keys
+- `CaseInsensitiveSet` - Set implementation with case-insensitive string values
 
--   It's faster
--   It uses less disk space
--   It has better support for monorepos
--   It has better support for peer dependencies
--   It has better support for multiple versions of the same package
--   It has in-built patching support
+#### Error Handling
+- `errorHandler` - Generic error handler with logging and type-specific error processing
 
-#### Installing PNPM
+#### File Operations
+- `findFile` - Async utility to find files in parent directories
+- `findFileSync` - Synchronous version of findFile
 
-(https://pnpm.io/installation)
+#### Environment
+- `isRunningLocally` - Check if code is running in local development
+- `isRunningInProd` - Check if code is running in production
 
-#### Common PNPM Commands
+#### Data Validation
+- `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting
 
--   `pnpm install` - Install dependencies (from lockfile if present)
--   `pnpm add <package>` - Add a new dependency
--   `pnpm remove <package>` - Remove a dependency
--   `pnpm --filter <package> <command>` - Run a command in a specific package
--   `pnpm add -w <package>` - Add a new dependency to root.
--   `pnpm add -D <package>` - Add a new dev dependency
--   `pnpm <script>` - Run a script from package.json
--   `pnpm dlx <package>` - Run a package without installing it (like npx)
--   `pnpm exec <command>` - Run a command in the context of the current workspace (including node_modules/.bin)
+#### Utilities
+- `sleep` - Promise-based delay function
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Features
 
-### Using Turborepo
-
-We use [Turborepo](https://turbo.build/) to manage our monorepo. It has the following benefits:
-
--   Caching: It caches the results of builds and tests, so that subsequent runs are faster
--   Generators: It provides a way to generate new packages and files from templates
--   Parallelism: It runs builds and tests in parallel, so that they are faster
--   Monorepo support: It provides a way to run builds and tests across multiple packages in parallel
-
-#### Installing Turborepo
-
-(https://turbo.build/repo/docs/installing)
-
-Or, just run `pnpm dlx turbo <command>` to run a command without installing it.
-
-#### Common Turborepo Commands
-
--   `turbo build` - Build all packages
--   `turborepo build --filter <package>` - Build a specific package
--   `turbo test` - Run all tests
--   `turbo test --filter <package>` - Run tests for a specific package
--   `turbo gen` to see a list of interactive generators
+- AWS Lambda integration
+- Standardized error handling
+- Case-insensitive collections
+- File system utilities
+- Environment detection
+- Data validation tools
+- HTTP request handling with Hono
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### .envrc file
-
-There is a .envrc file at the root that is preconfigured for you.
-
-We use (https://direnv.net/). Install it and run the following in the root of the repo:
-
-`direnv allow .`
-
-###
-
-### Linting
-
-```sh
-pnpm lint
-```
 
 ### Testing
 
@@ -152,159 +95,15 @@ pnpm lint
 pnpm test
 ```
 
-#### Running tests within a single package
+### Linting
 
 ```sh
-# Example running tests in the @smooai/core package
-pnpm --filter @smooai/core exec npx cross-env NODE_ENV=test vitest run -t "should generate schema with array"
+pnpm lint
 ```
-
-### Running scripts within a single package
-
-```
-pnpm --filter frontend lint
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Running in Development
-
-### Start Supabase
-
-**Note**: You need to have [Docker](https://www.docker.com/) installed.
-
-```
-pnpm supabase
-```
-
-### Start SST Dev
-
-```
-pnpm dev
-```
-
-### Start Next.js
-
-```
-pnpm --filter @smooai/web dev
-```
-
-### Auth
-
--   Add users at to http://localhost:54323/project/default/auth/users
--   View emails in development at http://localhost:54324/monitor
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Configuration
-
-This is meant to be a zero-config project. However, there are some configuration options available.
-
-### .envrc file
-
-There is a .envrc file at the root that is preconfigured for you.
-
-We use (https://direnv.net/). Install it and run the following in the root of the repo:
-
-`direnv allow .`
-
-### Parameters and Secrets
-
-Configuration of this project is done via a multi-layered approach based on [node-config](https://github.com/node-config/node-config).
-
-The end result is a `config` object with the same interface for server-side and client-side code.
-
-You can find the configuration files in the `packages/config/src/configByEnv` folder, named after the environment they are used for.
-
--   `default.ts` - Default configuration for all environments
--   `personal.ts` - Personal configuration for personal stage / local development
--   `dev.ts` - Configuration for dev stage
--   `prod.ts` - Configuration for prod stage
-
-The environment is selected based on the `NODE_CONFIG_ENV` environment variable. If it is not set, the default environment is used.
-
-When an environment is selected, the default configuration is merged with the environment specific configuration. The environment specific configuration overrides the default configuration.
-
-The Config class in `packages/config/src/Config.ts` provides a run-time specific configuration object that can be used to access the configuration values.
-
-This is typically used in two flavors:
-
-1. `packages/config/src/serverConfig.ts` - This is used to access configuration values in server-side code. It uses a top-level await to ensure the configuration is loaded before the code is executed.
-2. `packages/config/src/localConfig.ts` - This is used to access configuration values in client-side code. It uses only static configuration values and environment variables that are available at build time.
-
-#### Server-side configuration
-
-Server-side configuration attempts to retrieve the configuration from the following sources in order:
-
-1. SST Parameters or Secrets [SST Config](https://docs.sst.dev/config). This is where dynamic configuration is stored.
-2. `node-config` style environment configurationi files (as discussed above). This is where static configuration is stored.
-3. Environment variables, if the configuration value is not found in the previous sources.
-
-#### Client-side configuration
-
-Client-side configuration (NextJS) relies on [NextJS Environmental Variable Config](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables) to provide configuration values to the client.
-
-At build time, or set in the deployment environment, the environment specific configuration is pulled in order from:
-
-1. SST Parameters or Secrets [SST Config](https://docs.sst.dev/config). This is where dynamic configuration is stored.
-2. `node-config` style environment configurationi files (as discussed above). This is where static configuration is stored.
-
-These values are then injected into the client-side code as environment variables, notably the `NEXT_PUBLIC_CONFIG` environment variable which uses [compress-json](https://www.npmjs.com/package/compress-json) to compress the json representation of the environment configuration. This allows us to work within the 4kb limit of environment variables in deploying the site (limitation from [AWS Lambda](https://repost.aws/knowledge-center/lambda-environment-variable-size)).
-
-The `Config` class decompresses the `NEXT_PUBLIC_CONFIG` environment variable and provides a run-time specific configuration object that can be used to access the configuration values.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-<!-- Database -->
-
-## Database
-
-We use [Supabase](https://supabase.com/) for our database.
-
-Supabase is an open-source Firebase alternative. It provides a suite of tools for building apps with authentication, real-time data, and file storage. Mainly, we use it for its PostgreSQL database, real-time data, and Auth.
-
-### Start Supabase
-
-```
-pnpm supabase
-```
-
-### View Local Supabase Information
-
-```
-npx supabase status
-```
-
-### Migrations
-
-#### To create a new migration on a branch
-
-1. Go to the local Supabase project: http://localhost:54323/project/default/
-2. Create a new table
-3. Go to the console and run `pnpm supabase:diff -f add_table_name_table`
-4. Run `npx supabase db reset` to verify that a new migration does not generate errors
-
-cameron was here
-
-#### To update a column in the existing table
-
-1. Go to the local Supabase project: http://localhost:54323/project/default/
-2. Apply changes
-3. Go to the console and run `pnpm supabase:diff -f update_field_name_in_table_name_table`
-4. Run `npx supabase db reset` to verify that a new migration does not generate errors
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-<!-- CONTRIBUTING -->
 
 ## Contributing
 
-1. Create a branch. Reference a jira ticket in the branch name. (`git checkout -b smoodev-1234-fix-thing`)
-1. Commit your Changes. Reference a jira ticket in your commit message. (`git commit -m 'SMOODEV-1234: Add some AmazingFeature'`)
-1. Push to the Branch (`git push`)
-1. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+We're currently developing our contribution processes. If you're interested in contributing to this package or have questions, please reach out to us through the contact information below.
 
 <!-- CONTACT -->
 
@@ -315,7 +114,7 @@ Brent Rager - [Email](mailto:brent@smoo.ai)
 [LinkedIn](https://www.linkedin.com/in/brentrager/)
 [Threads](https://www.threads.net/@brentragertech)
 
-Project Link: [https://github.com/SmooAI/smooai](https://bitbucket.org/smooai/smooai/src/main/)
+Smoo Github: [https://github.com/SmooAI](https://github.com/SmooAI)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
