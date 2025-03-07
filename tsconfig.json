@@ -1,5 +1,5 @@
 {
-    "extends": "@smooai/config-typescript/base.json",
+    "extends": "@smooai/config-typescript-extended/base.json",
     "compilerOptions": {
         "lib": ["ES2023"],
         "outDir": "./dist",
