@@ -1,6 +1,6 @@
 {
     "name": "@smooai/utils",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.",
     "keywords": [
         "utils",
@@ -15,63 +15,78 @@
     },
     "license": "MIT",
     "exports": {
-        "./api/*": {
-            "types": "./dist/api/*.d.ts",
-            "import": "./dist/api/*.js",
-            "require": "./dist/api/*.js",
-            "default": "./dist/api/*.js"
+        "./validation/phoneNumber": {
+            "types": "./dist/validation/phoneNumber.d.ts",
+            "import": "./dist/validation/phoneNumber.js",
+            "require": "./dist/validation/phoneNumber.js",
+            "default": "./dist/validation/phoneNumber.js"
         },
-        "./collections/*": {
-            "types": "./dist/collections/*.d.ts",
-            "import": "./dist/collections/*.js",
-            "require": "./dist/collections/*.js",
-            "default": "./dist/collections/*.js"
+        "./utils/sleep": {
+            "types": "./dist/utils/sleep.d.ts",
+            "import": "./dist/utils/sleep.js",
+            "require": "./dist/utils/sleep.js",
+            "default": "./dist/utils/sleep.js"
         },
-        "./env/*": {
-            "types": "./dist/env/*.d.ts",
-            "import": "./dist/env/*.js",
-            "require": "./dist/env/*.js",
-            "default": "./dist/env/*.js"
+        "./scripts/createEntryPoints": {
+            "types": "./dist/scripts/createEntryPoints.d.ts",
+            "import": "./dist/scripts/createEntryPoints.js",
+            "require": "./dist/scripts/createEntryPoints.js",
+            "default": "./dist/scripts/createEntryPoints.js"
         },
-        "./error/*": {
-            "types": "./dist/error/*.d.ts",
-            "import": "./dist/error/*.js",
-            "require": "./dist/error/*.js",
-            "default": "./dist/error/*.js"
+        "./file/findFile": {
+            "types": "./dist/file/findFile.d.ts",
+            "import": "./dist/file/findFile.js",
+            "require": "./dist/file/findFile.js",
+            "default": "./dist/file/findFile.js"
         },
-        "./file/*": {
-            "types": "./dist/file/*.d.ts",
-            "import": "./dist/file/*.js",
-            "require": "./dist/file/*.js",
-            "default": "./dist/file/*.js"
+        "./error/errorHandler": {
+            "types": "./dist/error/errorHandler.d.ts",
+            "import": "./dist/error/errorHandler.js",
+            "require": "./dist/error/errorHandler.js",
+            "default": "./dist/error/errorHandler.js"
         },
-        "./scripts/*": {
-            "types": "./dist/scripts/*.d.ts",
-            "import": "./dist/scripts/*.js",
-            "require": "./dist/scripts/*.js",
-            "default": "./dist/scripts/*.js"
+        "./env/env": {
+            "types": "./dist/env/env.d.ts",
+            "import": "./dist/env/env.js",
+            "require": "./dist/env/env.js",
+            "default": "./dist/env/env.js"
         },
-        "./utils/*": {
-            "types": "./dist/utils/*.d.ts",
-            "import": "./dist/utils/*.js",
-            "require": "./dist/utils/*.js",
-            "default": "./dist/utils/*.js"
+        "./collections/CaseInsensitiveSet": {
+            "types": "./dist/collections/CaseInsensitiveSet.d.ts",
+            "import": "./dist/collections/CaseInsensitiveSet.js",
+            "require": "./dist/collections/CaseInsensitiveSet.js",
+            "default": "./dist/collections/CaseInsensitiveSet.js"
         },
-        "./validation/*": {
-            "types": "./dist/validation/*.d.ts",
-            "import": "./dist/validation/*.js",
-            "require": "./dist/validation/*.js",
-            "default": "./dist/validation/*.js"
+        "./collections/CaseInsensitiveMap": {
+            "types": "./dist/collections/CaseInsensitiveMap.d.ts",
+            "import": "./dist/collections/CaseInsensitiveMap.js",
+            "require": "./dist/collections/CaseInsensitiveMap.js",
+            "default": "./dist/collections/CaseInsensitiveMap.js"
         },
-        "./*": {
-            "types": "./dist/*.d.ts",
-            "import": "./dist/*.js",
-            "require": "./dist/*.js",
-            "default": "./dist/*.js"
+        "./api/hono": {
+            "types": "./dist/api/hono.d.ts",
+            "import": "./dist/api/hono.js",
+            "require": "./dist/api/hono.js",
+            "default": "./dist/api/hono.js"
+        },
+        "./api/apiHandler": {
+            "types": "./dist/api/apiHandler.d.ts",
+            "import": "./dist/api/apiHandler.js",
+            "require": "./dist/api/apiHandler.js",
+            "default": "./dist/api/apiHandler.js"
+        },
+        "./api/ApiError": {
+            "types": "./dist/api/ApiError.d.ts",
+            "import": "./dist/api/ApiError.js",
+            "require": "./dist/api/ApiError.js",
+            "default": "./dist/api/ApiError.js"
         }
     },
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "bin": {
+        "create-entry-points": "./dist/scripts/createEntryPoints.js"
+    },
     "files": [
         "dist/**"
     ],
@@ -91,6 +106,8 @@
     },
     "dependencies": {
         "@oclif/core": "^2.0.0",
+        "@oclif/plugin-help": "^6.2.26",
+        "@oclif/plugin-plugins": "^5.4.34",
         "@smooai/logger": "^1.0.12",
         "find-up": "^7.0.0",
         "hono": "^4.7.2",
