@@ -91,7 +91,7 @@
     },
     "dependencies": {
         "@oclif/core": "^2.0.0",
-        "@smooai/logger": "^1.0.5",
+        "@smooai/logger": "^1.0.12",
         "find-up": "^7.0.0",
         "hono": "^4.7.2",
         "http-status-codes": "^2.3.0",

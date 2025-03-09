@@ -13,8 +13,8 @@ importers:
         specifier: ^2.0.0
         version: 2.16.0(@types/node@20.17.24)(typescript@5.8.2)
       '@smooai/logger':
-        specifier: ^1.0.5
-        version: 1.0.5
+        specifier: ^1.0.12
+        version: 1.0.12
       find-up:
         specifier: ^7.0.0
         version: 7.0.0
@@ -1057,8 +1057,8 @@ packages:
     peerDependencies:
       typescript: ^5.8.2
 
-  '@smooai/logger@1.0.5':
-    resolution: {integrity: sha512-xyp7O32jutD1qH1WVhqv7I8jfksCKhRjl+BNtR2zWrtBNZAts/FP2a2ViHhC1bHZTgm9D/IF0kSzKxZ1+avmCQ==}
+  '@smooai/logger@1.0.12':
+    resolution: {integrity: sha512-+vx5dBMOGhHFUslTAaqjK6z4vCEOZildJQKKfsCMyzrn4NN/FW1lRPgKXR+ByYxI+HoJy0wbDipXF/hd3nP1fQ==}
     engines: {node: '>=20.0.0'}
 
   '@tsconfig/node10@1.0.11':
@@ -4892,7 +4892,7 @@ snapshots:
     dependencies:
       typescript: 5.8.2
 
-  '@smooai/logger@1.0.5':
+  '@smooai/logger@1.0.12':
     dependencies:
       '@aws-sdk/client-sqs': 3.758.0
       '@opentelemetry/api': 1.9.0
