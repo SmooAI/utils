@@ -15,7 +15,7 @@ export default defineConfig((options: Options) => ({
         'src/api/ApiError.ts',
     ],
     clean: true,
-    dts: false, // Turned off due to issues with @supabase/supabase-js/lib/types because of tyepof fetch and an error about it being private.
+    dts: true,
     format: ['cjs'],
     sourcemap: true,
     target: 'es2022',
