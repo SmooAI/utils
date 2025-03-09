@@ -1,4 +1,11 @@
-import { config } from "@smooai/config-eslint";
+import { config as configBase } from '@smooai/config-eslint';
 
 /** @type {import("eslint").Linter.Config} */
-export default config;
+export default [
+    ...configBase,
+    {
+        rules: {
+            'turbo/no-undeclared-env-vars': 'off',
+        },
+    },
+];

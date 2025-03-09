@@ -52,29 +52,36 @@ pnpm add @smooai/utils
 ### Available Utilities
 
 #### API Handling
+
 - `ApiError` - Custom error class for handling API-specific errors with status codes
 - `apiHandler` - Lambda function wrapper for standardized API error handling and responses
 - `createAwsLambdaHonoApp` - Factory for creating Hono apps configured for AWS Lambda
 
 #### Collections
+
 - `CaseInsensitiveMap` - Map implementation with case-insensitive string keys
 - `CaseInsensitiveSet` - Set implementation with case-insensitive string values
 
 #### Error Handling
+
 - `errorHandler` - Generic error handler with logging and type-specific error processing
 
 #### File Operations
+
 - `findFile` - Async utility to find files in parent directories
 - `findFileSync` - Synchronous version of findFile
 
 #### Environment
+
 - `isRunningLocally` - Check if code is running in local development
 - `isRunningInProd` - Check if code is running in production
 
 #### Data Validation
+
 - `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting
 
 #### Utilities
+
 - `sleep` - Promise-based delay function
 
 ### Features
