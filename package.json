@@ -14,6 +14,62 @@
         "url": "https://github.com/SmooAI/utils.git"
     },
     "license": "MIT",
+    "exports": {
+        "./api/*": {
+            "types": "./dist/api/*.d.ts",
+            "import": "./dist/api/*.js",
+            "require": "./dist/api/*.js",
+            "default": "./dist/api/*.js"
+        },
+        "./collections/*": {
+            "types": "./dist/collections/*.d.ts",
+            "import": "./dist/collections/*.js",
+            "require": "./dist/collections/*.js",
+            "default": "./dist/collections/*.js"
+        },
+        "./env/*": {
+            "types": "./dist/env/*.d.ts",
+            "import": "./dist/env/*.js",
+            "require": "./dist/env/*.js",
+            "default": "./dist/env/*.js"
+        },
+        "./error/*": {
+            "types": "./dist/error/*.d.ts",
+            "import": "./dist/error/*.js",
+            "require": "./dist/error/*.js",
+            "default": "./dist/error/*.js"
+        },
+        "./file/*": {
+            "types": "./dist/file/*.d.ts",
+            "import": "./dist/file/*.js",
+            "require": "./dist/file/*.js",
+            "default": "./dist/file/*.js"
+        },
+        "./scripts/*": {
+            "types": "./dist/scripts/*.d.ts",
+            "import": "./dist/scripts/*.js",
+            "require": "./dist/scripts/*.js",
+            "default": "./dist/scripts/*.js"
+        },
+        "./utils/*": {
+            "types": "./dist/utils/*.d.ts",
+            "import": "./dist/utils/*.js",
+            "require": "./dist/utils/*.js",
+            "default": "./dist/utils/*.js"
+        },
+        "./validation/*": {
+            "types": "./dist/validation/*.d.ts",
+            "import": "./dist/validation/*.js",
+            "require": "./dist/validation/*.js",
+            "default": "./dist/validation/*.js"
+        },
+        "./*": {
+            "types": "./dist/*.d.ts",
+            "import": "./dist/*.js",
+            "require": "./dist/*.js",
+            "default": "./dist/*.js"
+        }
+    },
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
