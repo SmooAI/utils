@@ -1,9 +1,10 @@
 import { Command, Flags } from '@oclif/core';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { globSync } from 'glob';
+import path from 'path';
 
 export default class UpdateTsupConfig extends Command {
-    static description = 'Update tsup.config.ts entry field based on provided patterns';
+    static description = 'Update tsup.config.ts entry field and package.json exports based on provided patterns';
 
     static flags = {
         include: Flags.string({
@@ -22,25 +23,57 @@ export default class UpdateTsupConfig extends Command {
         }),
     };
 
+    private generateExportsConfig(files: string[]) {
+        const exports: Record<string, any> = {};
+
+        files.forEach((file) => {
+            const dirname = path.dirname(file).replace('src/', '');
+            const basename = path.basename(file, '.ts');
+
+            // Skip index files as they'll be handled separately
+            if (basename === 'index') return;
+
+            const exportPath = dirname === '.' ? `./${basename}` : `./${dirname}/${basename}`;
+
+            exports[exportPath] = {
+                types: `./dist/${dirname}/${basename}.d.ts`,
+                import: `./dist/${dirname}/${basename}.js`,
+                require: `./dist/${dirname}/${basename}.js`,
+                default: `./dist/${dirname}/${basename}.js`,
+            };
+        });
+
+        return exports;
+    }
+
     async run() {
         const { flags } = await this.parse(UpdateTsupConfig);
         const includePatterns = flags.include;
-        // Add test files and .d.ts files to ignore patterns
         const defaultIgnore = ['**/*.spec.ts', '**/*.test.ts', '**/*.d.ts'];
         const ignorePatterns = [...defaultIgnore, ...(flags.ignore || [])];
 
         try {
             const files = globSync(includePatterns, { ignore: ignorePatterns });
 
+            // Update tsup.config.ts
             let tsupFile = readFileSync('tsup.config.ts', 'utf-8');
             tsupFile = tsupFile.replace(/entry: \[[^\]]*\],/, `entry: [${files.map((file) => `'${file}'`).join(',')}],`);
-
             writeFileSync('tsup.config.ts', tsupFile);
             this.log('Updated tsup.config.ts successfully.');
+
+            // Update package.json
+            const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
+            packageJson.exports = this.generateExportsConfig(files);
+            writeFileSync('package.json', JSON.stringify(packageJson, null, 4) + '\n');
+            this.log('Updated package.json exports successfully.');
         } catch (error) {
             this.error(`Error during update: ${error}`);
         }
     }
 }
 
-UpdateTsupConfig.run();
+export { UpdateTsupConfig };
+
+if (require.main === module) {
+    UpdateTsupConfig.run();
+}
