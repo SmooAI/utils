@@ -43,6 +43,14 @@ Check out other SmooAI packages at [npmjs.com/org/smooai](https://www.npmjs.com/
 
 A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.
 
+![NPM Version](https://img.shields.io/npm/v/%40smooai%2Futils?style=for-the-badge)
+![NPM Downloads](https://img.shields.io/npm/dw/%40smooai%2Futils?style=for-the-badge)
+![NPM Last Update](https://img.shields.io/npm/last-update/%40smooai%2Futils?style=for-the-badge)
+
+![GitHub License](https://img.shields.io/github/license/SmooAI/utils?style=for-the-badge)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/SmooAI/utils/release.yml?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/SmooAI/utils?style=for-the-badge)
+
 ### Installation
 
 ```sh
