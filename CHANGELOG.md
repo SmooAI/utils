@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.0.1
+
+### Patch Changes
+
+- a3e04ff: Added create-entry-points bin script and changed that script to set package.jsone export entry points.
+- f9d4712: Fix lockfile.
+
 ## 0.0.1
 
 ### Patch Changes
