@@ -12,6 +12,12 @@ importers:
       '@oclif/core':
         specifier: ^2.0.0
         version: 2.16.0(@types/node@20.17.24)(typescript@5.8.2)
+      '@oclif/plugin-help':
+        specifier: ^6.2.26
+        version: 6.2.26
+      '@oclif/plugin-plugins':
+        specifier: ^5.4.34
+        version: 5.4.34
       '@smooai/logger':
         specifier: ^1.0.12
         version: 1.0.12
@@ -37,12 +43,6 @@ importers:
       '@changesets/cli':
         specifier: ^2.28.1
         version: 2.28.1
-      '@oclif/plugin-help':
-        specifier: ^6.2.26
-        version: 6.2.26
-      '@oclif/plugin-plugins':
-        specifier: ^5.4.34
-        version: 5.4.34
       '@smooai/config-eslint':
         specifier: ^1.0.7
         version: 1.0.7(@eslint/js@9.22.0)(@next/eslint-plugin-next@14.2.24)(@vercel/style-guide@6.0.0(@next/eslint-plugin-next@14.2.24)(eslint@9.22.0)(prettier@3.5.3)(typescript@5.8.2)(vitest@3.0.8(@types/node@20.17.24)))(eslint-config-prettier@10.1.1(eslint@9.22.0))(eslint-plugin-only-warn@1.1.0)(eslint-plugin-react-hooks@5.2.0(eslint@9.22.0))(eslint-plugin-react-refresh@0.4.19(eslint@9.22.0))(eslint-plugin-react@7.37.4(eslint@9.22.0))(eslint-plugin-turbo@2.4.4(eslint@9.22.0)(turbo@2.4.4))(eslint@9.22.0)(prettier-plugin-packagejson@2.5.10(prettier@3.5.3))(prettier@3.5.3)(typescript-eslint@8.26.0(eslint@9.22.0)(typescript@5.8.2))(typescript@5.8.2)
