@@ -1,7 +1,6 @@
 import { CaseInsensitiveMap } from './CaseInsensitiveMap';
 import { describe, it, expect } from 'vitest';
 
-
 describe('CaseInsensitiveMap', () => {
     it('should create an empty map', () => {
         const map = new CaseInsensitiveMap();
@@ -18,7 +17,7 @@ describe('CaseInsensitiveMap', () => {
 
     it('should handle case-insensitive keys for set and get operations', () => {
         const map = new CaseInsensitiveMap<string, number>();
-        
+
         map.set('Hello', 1);
         expect(map.get('HELLO')).toBe(1);
         expect(map.get('hello')).toBe(1);
@@ -27,7 +26,7 @@ describe('CaseInsensitiveMap', () => {
 
     it('should handle case-insensitive keys for has operation', () => {
         const map = new CaseInsensitiveMap<string, number>();
-        
+
         map.set('Hello', 1);
         expect(map.has('HELLO')).toBe(true);
         expect(map.has('hello')).toBe(true);
@@ -37,7 +36,7 @@ describe('CaseInsensitiveMap', () => {
 
     it('should handle non-string keys', () => {
         const map = new CaseInsensitiveMap<string | number, string>();
-        
+
         map.set('Hello', 'world');
         map.set(123, 'number');
 
@@ -47,7 +46,7 @@ describe('CaseInsensitiveMap', () => {
 
     it('should handle multiple set operations with different cases', () => {
         const map = new CaseInsensitiveMap<string, number>();
-        
+
         map.set('Hello', 1);
         map.set('HELLO', 2);
         map.set('hello', 3);

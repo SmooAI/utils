@@ -3,26 +3,25 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createAwsLambdaHonoApp } from './hono';
 import { Hono } from 'hono';
 import { z } from 'zod';
-import * as env from './env';
+import * as env from '@/env/env';
 
 // Mock dependencies
-vi.mock('./env');
+vi.mock('@/env/env');
 vi.mock('@smooai/logger/AwsLambdaLogger', () => {
     return {
         default: class MockLogger {
-            info = vi.fn()
-            error = vi.fn()
-            addContext = vi.fn()
-            addLambdaContext = vi.fn()
-        }
-    }
+            info = vi.fn();
+            error = vi.fn();
+            addContext = vi.fn();
+            addLambdaContext = vi.fn();
+        },
+    };
 });
 
 describe('createAwsLambdaHonoApp', () => {
     beforeEach(() => {
         // Reset mocks
         vi.clearAllMocks();
-    
     });
 
     it('should create a Hono app with middleware', async () => {
@@ -137,4 +136,4 @@ describe('createAwsLambdaHonoApp', () => {
         expect(response.statusCode).toBe(200);
         expect(response.headers['content-type']).toBe('application/json');
     });
-}); 
+});

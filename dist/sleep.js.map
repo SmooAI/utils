@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/sleep.ts"],"sourcesContent":["export default function sleep(ms: number) {\n    return new Promise((resolve) => setTimeout(resolve, ms));\n}\n"],"mappings":";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAe,SAAR,MAAuB,IAAY;AACtC,SAAO,IAAI,QAAQ,CAAC,YAAY,WAAW,SAAS,EAAE,CAAC;AAC3D;","names":[]}

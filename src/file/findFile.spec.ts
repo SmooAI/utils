@@ -13,8 +13,8 @@ vi.mock('@smooai/logger/Logger', () => {
     return {
         default: class Logger {
             constructor() {}
-                error: Mock = vi.fn();
-            }
+            error: Mock = vi.fn();
+        },
     };
 });
 
@@ -74,4 +74,4 @@ describe('findFile utilities', () => {
             expect(() => findFileSync('file.txt', { logError: false })).toThrow('Some error');
         });
     });
-}); 
+});

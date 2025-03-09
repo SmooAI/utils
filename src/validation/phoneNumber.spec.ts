@@ -40,7 +40,7 @@ describe('validateAndTransformPhoneNumber', () => {
         invalidNumbers.forEach((input) => {
             const result = validateAndTransformPhoneNumber(input, context);
             expect(result).toMatchObject({
-                status: 'aborted'
+                status: 'aborted',
             });
             expect(context.addIssue).toHaveBeenCalledWith({
                 code: 'custom',
@@ -48,4 +48,4 @@ describe('validateAndTransformPhoneNumber', () => {
             });
         });
     });
-}); 
+});
