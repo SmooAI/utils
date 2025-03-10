@@ -9,11 +9,20 @@
         "hono",
         "smooai"
     ],
+    "homepage": "https://github.com/SmooAI/utils#readme",
+    "bugs": {
+        "url": "https://github.com/SmooAI/utils/issues"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/SmooAI/utils.git"
     },
     "license": "MIT",
+    "author": {
+        "name": "SmooAI",
+        "email": "brent@smooai.com",
+        "url": "https://smooai.com"
+    },
     "exports": {
         "./validation/phoneNumber": {
             "types": "./dist/validation/phoneNumber.d.ts",
@@ -82,8 +91,6 @@
             "default": "./dist/api/ApiError.js"
         }
     },
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "bin": {
         "create-entry-points": "./dist/scripts/createEntryPoints.js"
     },
