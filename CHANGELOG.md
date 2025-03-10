@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.2
+
+### Patch Changes
+
+- e787995: Update author / bugs / homepage.
+
 ## 1.0.1
 
 ### Patch Changes
