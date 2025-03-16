@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.3
+
+### Patch Changes
+
+- 2e9a19f: Updated createEntryPoints so it points import to .mjs.
+
 ## 1.0.2
 
 ### Patch Changes
