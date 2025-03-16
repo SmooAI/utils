@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.4
+
+### Patch Changes
+
+- 828e873: Fixed createEntryPoints for this package.
+
 ## 1.0.3
 
 ### Patch Changes
