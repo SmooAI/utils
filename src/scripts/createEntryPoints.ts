@@ -54,19 +54,23 @@ export default class UpdateTsupConfig extends Command {
 
         try {
             const files = globSync(includePatterns, { ignore: ignorePatterns });
+            console.log('Found files:', files);
 
             // Update tsup.config.ts
             let tsupFile = readFileSync('tsup.config.ts', 'utf-8');
             tsupFile = tsupFile.replace(/entry: \[[^\]]*\],/, `entry: [${files.map((file) => `'${file}'`).join(',')}],`);
             writeFileSync('tsup.config.ts', tsupFile);
+            console.log('tsup.config.ts content:', tsupFile);
             this.log('Updated tsup.config.ts successfully.');
 
             // Update package.json
             const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
             packageJson.exports = this.generateExportsConfig(files);
             writeFileSync('package.json', JSON.stringify(packageJson, null, 4) + '\n');
+            console.log('package.json exports:', packageJson.exports);
             this.log('Updated package.json exports successfully.');
         } catch (error) {
+            console.error('Detailed error:', error);
             this.error(`Error during update: ${error}`);
         }
     }
@@ -75,5 +79,7 @@ export default class UpdateTsupConfig extends Command {
 export { UpdateTsupConfig };
 
 if (require.main === module) {
+    UpdateTsupConfig.run();
+} else {
     UpdateTsupConfig.run();
 }
