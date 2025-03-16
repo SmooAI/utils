@@ -24,7 +24,7 @@ export default class UpdateTsupConfig extends Command {
     };
 
     private generateExportsConfig(files: string[]) {
-        const exports: Record<string, any> = {};
+        const exports: Record<string, unknown> = {};
 
         files.forEach((file) => {
             const dirname = path.dirname(file).replace('src/', '');
@@ -37,7 +37,7 @@ export default class UpdateTsupConfig extends Command {
 
             exports[exportPath] = {
                 types: `./dist/${dirname}/${basename}.d.ts`,
-                import: `./dist/${dirname}/${basename}.js`,
+                import: `./dist/${dirname}/${basename}.mjs`,
                 require: `./dist/${dirname}/${basename}.js`,
                 default: `./dist/${dirname}/${basename}.js`,
             };
