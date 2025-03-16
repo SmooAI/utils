@@ -16,7 +16,7 @@ export default defineConfig((options: Options) => ({
     ],
     clean: true,
     dts: true,
-    format: ['cjs'],
+    format: ['cjs', 'esm'],
     sourcemap: true,
     target: 'es2022',
     treeShaking: true,
