@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.11
+
+### Patch Changes
+
+- 6e075cf: Change to using changeset publish.
+
 ## 1.0.10
 
 ### Patch Changes
