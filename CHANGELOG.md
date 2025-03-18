@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.8
+
+### Patch Changes
+
+- 488da3e: Fix pnpm publish.
+
 ## 1.0.7
 
 ### Patch Changes
