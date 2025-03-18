@@ -55,7 +55,7 @@ jobs:
         with:  
           commit: "🦋 New version release"  
           title: "🦋 New version release"  
-          publish: pnpm ci:publish && pnpm changeset publish
+          publish: pnpm ci:publish
           createGithubReleases: true
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
