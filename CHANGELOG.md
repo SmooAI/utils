@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.10
+
+### Patch Changes
+
+- 8e1ead4: Fix github releases.
+
 ## 1.0.9
 
 ### Patch Changes
