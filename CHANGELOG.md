@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.5
+
+### Patch Changes
+
+- f6cc058: Fix github releases on changeset release.
+
 ## 1.0.4
 
 ### Patch Changes
