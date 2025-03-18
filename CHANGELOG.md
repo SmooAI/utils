@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.6
+
+### Patch Changes
+
+- 91f7433: Add permissions for github release to release action.
+
 ## 1.0.5
 
 ### Patch Changes
