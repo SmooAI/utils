@@ -54,7 +54,6 @@ export default class UpdateTsupConfig extends Command {
 
         try {
             const files = globSync(includePatterns, { ignore: ignorePatterns });
-            console.log('Found files:', files);
 
             // Update tsup.config.ts
             let tsupFile = readFileSync('tsup.config.ts', 'utf-8');
