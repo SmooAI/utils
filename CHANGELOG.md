@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.9
+
+### Patch Changes
+
+- 5bc4784: Adjust changeset access.
+
 ## 1.0.8
 
 ### Patch Changes
