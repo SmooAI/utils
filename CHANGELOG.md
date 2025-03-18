@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.7
+
+### Patch Changes
+
+- 40ff3ee: Add permissions to kickoff GitHub action again.
+
 ## 1.0.6
 
 ### Patch Changes
