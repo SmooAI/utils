@@ -33,7 +33,8 @@ export default class UpdateTsupConfig extends Command {
             // Skip index files as they'll be handled separately
             if (basename === 'index') return;
 
-            const exportPath = dirname === '.' ? `./${basename}` : `./${dirname}/${basename}`;
+            // If the file is directly in src, use just the basename
+            const exportPath = dirname === '.' || dirname === 'src' ? `./${basename}` : `./${dirname}/${basename}`;
 
             exports[exportPath] = {
                 types: `./dist/${dirname}/${basename}.d.ts`,
