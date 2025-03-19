@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.13
+
+### Patch Changes
+
+- 36a54ca: Fix createEntryPoints for files directly in src/.
+
 ## 1.0.12
 
 ### Patch Changes
