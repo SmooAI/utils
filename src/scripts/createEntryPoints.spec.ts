@@ -61,10 +61,10 @@ describe('UpdateTsupConfig', () => {
 
             expect(exports).toEqual({
                 './example': {
-                    types: 'dist/example.d.ts',
-                    import: 'dist/example.mjs',
-                    require: 'dist/example.js',
-                    default: 'dist/example.js',
+                    types: './dist/example.d.ts',
+                    import: './dist/example.mjs',
+                    require: './dist/example.js',
+                    default: './dist/example.js',
                 },
             });
         });
@@ -75,10 +75,10 @@ describe('UpdateTsupConfig', () => {
 
             expect(exports).toEqual({
                 './utils/helpers': {
-                    types: 'dist/utils/helpers.d.ts',
-                    import: 'dist/utils/helpers.mjs',
-                    require: 'dist/utils/helpers.js',
-                    default: 'dist/utils/helpers.js',
+                    types: './dist/utils/helpers.d.ts',
+                    import: './dist/utils/helpers.mjs',
+                    require: './dist/utils/helpers.js',
+                    default: './dist/utils/helpers.js',
                 },
             });
         });
@@ -90,16 +90,16 @@ describe('UpdateTsupConfig', () => {
             // Verify exports doesn't include index.ts (it's handled separately)
             expect(exports).toEqual({
                 './utils/helpers': {
-                    types: 'dist/utils/helpers.d.ts',
-                    import: 'dist/utils/helpers.mjs',
-                    require: 'dist/utils/helpers.js',
-                    default: 'dist/utils/helpers.js',
+                    types: './dist/utils/helpers.d.ts',
+                    import: './dist/utils/helpers.mjs',
+                    require: './dist/utils/helpers.js',
+                    default: './dist/utils/helpers.js',
                 },
                 './components/Button': {
-                    types: 'dist/components/Button.d.ts',
-                    import: 'dist/components/Button.mjs',
-                    require: 'dist/components/Button.js',
-                    default: 'dist/components/Button.js',
+                    types: './dist/components/Button.d.ts',
+                    import: './dist/components/Button.mjs',
+                    require: './dist/components/Button.js',
+                    default: './dist/components/Button.js',
                 },
             });
         });
@@ -117,10 +117,10 @@ describe('UpdateTsupConfig', () => {
 
             expect(exports).toEqual({
                 './components/forms/validation/rules': {
-                    types: 'dist/components/forms/validation/rules.d.ts',
-                    import: 'dist/components/forms/validation/rules.mjs',
-                    require: 'dist/components/forms/validation/rules.js',
-                    default: 'dist/components/forms/validation/rules.js',
+                    types: './dist/components/forms/validation/rules.d.ts',
+                    import: './dist/components/forms/validation/rules.mjs',
+                    require: './dist/components/forms/validation/rules.js',
+                    default: './dist/components/forms/validation/rules.js',
                 },
             });
         });
@@ -172,22 +172,22 @@ describe('UpdateTsupConfig', () => {
                 name: 'test',
                 exports: {
                     './component1': {
-                        types: 'dist/component1.d.ts',
-                        import: 'dist/component1.mjs',
-                        require: 'dist/component1.js',
-                        default: 'dist/component1.js',
+                        types: './dist/component1.d.ts',
+                        import: './dist/component1.mjs',
+                        require: './dist/component1.js',
+                        default: './dist/component1.js',
                     },
                     './component2': {
-                        types: 'dist/component2.d.ts',
-                        import: 'dist/component2.mjs',
-                        require: 'dist/component2.js',
-                        default: 'dist/component2.js',
+                        types: './dist/component2.d.ts',
+                        import: './dist/component2.mjs',
+                        require: './dist/component2.js',
+                        default: './dist/component2.js',
                     },
                     './component3': {
-                        types: 'dist/component3.d.ts',
-                        import: 'dist/component3.mjs',
-                        require: 'dist/component3.js',
-                        default: 'dist/component3.js',
+                        types: './dist/component3.d.ts',
+                        import: './dist/component3.mjs',
+                        require: './dist/component3.js',
+                        default: './dist/component3.js',
                     },
                 },
             });
@@ -214,15 +214,15 @@ describe('UpdateTsupConfig', () => {
 
             expect(updatedPackageJson).toEqual({
                 name: 'test',
-                main: 'dist/index.js',
-                module: 'dist/index.mjs',
-                types: 'dist/index.d.ts',
+                main: './dist/index.js',
+                module: './dist/index.mjs',
+                types: './dist/index.d.ts',
                 exports: {
                     './utils/helpers': {
-                        types: 'dist/utils/helpers.d.ts',
-                        import: 'dist/utils/helpers.mjs',
-                        require: 'dist/utils/helpers.js',
-                        default: 'dist/utils/helpers.js',
+                        types: './dist/utils/helpers.d.ts',
+                        import: './dist/utils/helpers.mjs',
+                        require: './dist/utils/helpers.js',
+                        default: './dist/utils/helpers.js',
                     },
                 },
             });

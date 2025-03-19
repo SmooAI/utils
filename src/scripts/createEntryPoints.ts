@@ -37,7 +37,7 @@ export default class UpdateTsupConfig extends Command {
             const exportPath = dirname === '.' || dirname === 'src' ? `./${basename}` : `./${dirname}/${basename}`;
 
             // For files directly in src or root, use dist/basename, otherwise keep the directory structure
-            const distBasePath = dirname === '.' || dirname === 'src' ? `dist/${basename}` : `dist/${dirname}/${basename}`;
+            const distBasePath = dirname === '.' || dirname === 'src' ? `./dist/${basename}` : `./dist/${dirname}/${basename}`;
 
             exports[exportPath] = {
                 types: `${distBasePath}.d.ts`,
@@ -71,9 +71,9 @@ export default class UpdateTsupConfig extends Command {
 
             // If we have src/index.ts, set the main entry points
             if (files.includes('src/index.ts')) {
-                packageJson.main = 'dist/index.js';
-                packageJson.module = 'dist/index.mjs';
-                packageJson.types = 'dist/index.d.ts';
+                packageJson.main = './dist/index.js';
+                packageJson.module = './dist/index.mjs';
+                packageJson.types = './dist/index.d.ts';
             }
 
             packageJson.exports = exports;
