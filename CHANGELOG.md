@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.0.14
+
+### Patch Changes
+
+- 98abe00: Fixed createEntryPoints for certain edge cases and added support for src/index.ts.
+- 36d3fea: Fix chicken and egg build issue.
+
 ## 1.0.13
 
 ### Patch Changes
