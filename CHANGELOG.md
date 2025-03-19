@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.0.15
+
+### Patch Changes
+
+- 529410b: Update dependencies.
+- 529410b: Update to working @smooai/logger.
+
 ## 1.0.14
 
 ### Patch Changes
