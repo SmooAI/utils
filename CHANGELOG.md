@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.17
+
+### Patch Changes
+
+- b57b012: Upgrade node types to v22.
+
 ## 1.0.16
 
 ### Patch Changes
