@@ -33,14 +33,17 @@ export default class UpdateTsupConfig extends Command {
             // Skip index files as they'll be handled separately
             if (basename === 'index') return;
 
-            // If the file is directly in src, use just the basename
+            // If the file is directly in src or root, use just the basename
             const exportPath = dirname === '.' || dirname === 'src' ? `./${basename}` : `./${dirname}/${basename}`;
 
+            // For files directly in src or root, use dist/basename, otherwise keep the directory structure
+            const distBasePath = dirname === '.' || dirname === 'src' ? `dist/${basename}` : `dist/${dirname}/${basename}`;
+
             exports[exportPath] = {
-                types: `./dist/${dirname}/${basename}.d.ts`,
-                import: `./dist/${dirname}/${basename}.mjs`,
-                require: `./dist/${dirname}/${basename}.js`,
-                default: `./dist/${dirname}/${basename}.js`,
+                types: `${distBasePath}.d.ts`,
+                import: `${distBasePath}.mjs`,
+                require: `${distBasePath}.js`,
+                default: `${distBasePath}.js`,
             };
         });
 
@@ -64,7 +67,16 @@ export default class UpdateTsupConfig extends Command {
 
             // Update package.json
             const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
-            packageJson.exports = this.generateExportsConfig(files);
+            const exports = this.generateExportsConfig(files);
+
+            // If we have src/index.ts, set the main entry points
+            if (files.includes('src/index.ts')) {
+                packageJson.main = 'dist/index.js';
+                packageJson.module = 'dist/index.mjs';
+                packageJson.types = 'dist/index.d.ts';
+            }
+
+            packageJson.exports = exports;
             writeFileSync('package.json', JSON.stringify(packageJson, null, 4) + '\n');
             this.log('Updated package.json exports successfully.');
         } catch (error) {
