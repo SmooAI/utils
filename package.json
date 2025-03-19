@@ -25,70 +25,70 @@
     },
     "exports": {
         "./validation/phoneNumber": {
-            "types": "./dist/validation/phoneNumber.d.ts",
-            "import": "./dist/validation/phoneNumber.mjs",
-            "require": "./dist/validation/phoneNumber.js",
-            "default": "./dist/validation/phoneNumber.js"
+            "types": "dist/validation/phoneNumber.d.ts",
+            "import": "dist/validation/phoneNumber.mjs",
+            "require": "dist/validation/phoneNumber.js",
+            "default": "dist/validation/phoneNumber.js"
         },
         "./utils/sleep": {
-            "types": "./dist/utils/sleep.d.ts",
-            "import": "./dist/utils/sleep.mjs",
-            "require": "./dist/utils/sleep.js",
-            "default": "./dist/utils/sleep.js"
+            "types": "dist/utils/sleep.d.ts",
+            "import": "dist/utils/sleep.mjs",
+            "require": "dist/utils/sleep.js",
+            "default": "dist/utils/sleep.js"
         },
         "./scripts/createEntryPoints": {
-            "types": "./dist/scripts/createEntryPoints.d.ts",
-            "import": "./dist/scripts/createEntryPoints.mjs",
-            "require": "./dist/scripts/createEntryPoints.js",
-            "default": "./dist/scripts/createEntryPoints.js"
+            "types": "dist/scripts/createEntryPoints.d.ts",
+            "import": "dist/scripts/createEntryPoints.mjs",
+            "require": "dist/scripts/createEntryPoints.js",
+            "default": "dist/scripts/createEntryPoints.js"
         },
         "./file/findFile": {
-            "types": "./dist/file/findFile.d.ts",
-            "import": "./dist/file/findFile.mjs",
-            "require": "./dist/file/findFile.js",
-            "default": "./dist/file/findFile.js"
+            "types": "dist/file/findFile.d.ts",
+            "import": "dist/file/findFile.mjs",
+            "require": "dist/file/findFile.js",
+            "default": "dist/file/findFile.js"
         },
         "./error/errorHandler": {
-            "types": "./dist/error/errorHandler.d.ts",
-            "import": "./dist/error/errorHandler.mjs",
-            "require": "./dist/error/errorHandler.js",
-            "default": "./dist/error/errorHandler.js"
+            "types": "dist/error/errorHandler.d.ts",
+            "import": "dist/error/errorHandler.mjs",
+            "require": "dist/error/errorHandler.js",
+            "default": "dist/error/errorHandler.js"
         },
         "./env/env": {
-            "types": "./dist/env/env.d.ts",
-            "import": "./dist/env/env.mjs",
-            "require": "./dist/env/env.js",
-            "default": "./dist/env/env.js"
+            "types": "dist/env/env.d.ts",
+            "import": "dist/env/env.mjs",
+            "require": "dist/env/env.js",
+            "default": "dist/env/env.js"
         },
         "./collections/CaseInsensitiveSet": {
-            "types": "./dist/collections/CaseInsensitiveSet.d.ts",
-            "import": "./dist/collections/CaseInsensitiveSet.mjs",
-            "require": "./dist/collections/CaseInsensitiveSet.js",
-            "default": "./dist/collections/CaseInsensitiveSet.js"
+            "types": "dist/collections/CaseInsensitiveSet.d.ts",
+            "import": "dist/collections/CaseInsensitiveSet.mjs",
+            "require": "dist/collections/CaseInsensitiveSet.js",
+            "default": "dist/collections/CaseInsensitiveSet.js"
         },
         "./collections/CaseInsensitiveMap": {
-            "types": "./dist/collections/CaseInsensitiveMap.d.ts",
-            "import": "./dist/collections/CaseInsensitiveMap.mjs",
-            "require": "./dist/collections/CaseInsensitiveMap.js",
-            "default": "./dist/collections/CaseInsensitiveMap.js"
+            "types": "dist/collections/CaseInsensitiveMap.d.ts",
+            "import": "dist/collections/CaseInsensitiveMap.mjs",
+            "require": "dist/collections/CaseInsensitiveMap.js",
+            "default": "dist/collections/CaseInsensitiveMap.js"
         },
         "./api/hono": {
-            "types": "./dist/api/hono.d.ts",
-            "import": "./dist/api/hono.mjs",
-            "require": "./dist/api/hono.js",
-            "default": "./dist/api/hono.js"
+            "types": "dist/api/hono.d.ts",
+            "import": "dist/api/hono.mjs",
+            "require": "dist/api/hono.js",
+            "default": "dist/api/hono.js"
         },
         "./api/apiHandler": {
-            "types": "./dist/api/apiHandler.d.ts",
-            "import": "./dist/api/apiHandler.mjs",
-            "require": "./dist/api/apiHandler.js",
-            "default": "./dist/api/apiHandler.js"
+            "types": "dist/api/apiHandler.d.ts",
+            "import": "dist/api/apiHandler.mjs",
+            "require": "dist/api/apiHandler.js",
+            "default": "dist/api/apiHandler.js"
         },
         "./api/ApiError": {
-            "types": "./dist/api/ApiError.d.ts",
-            "import": "./dist/api/ApiError.mjs",
-            "require": "./dist/api/ApiError.js",
-            "default": "./dist/api/ApiError.js"
+            "types": "dist/api/ApiError.d.ts",
+            "import": "dist/api/ApiError.mjs",
+            "require": "dist/api/ApiError.js",
+            "default": "dist/api/ApiError.js"
         }
     },
     "bin": {
@@ -115,7 +115,7 @@
         "@oclif/core": "^2.0.0",
         "@oclif/plugin-help": "^6.2.26",
         "@oclif/plugin-plugins": "^5.4.34",
-        "@smooai/logger": "^1.0.12",
+        "@smooai/logger": "^1.0.15",
         "find-up": "^7.0.0",
         "hono": "^4.7.2",
         "http-status-codes": "^2.3.0",
@@ -125,8 +125,8 @@
     },
     "devDependencies": {
         "@changesets/cli": "^2.28.1",
-        "@smooai/config-eslint": "^1.0.7",
-        "@smooai/config-typescript": "^1.0.11",
+        "@smooai/config-eslint": "^1.0.10",
+        "@smooai/config-typescript": "^1.0.14",
         "@types/aws-lambda": "^8.10.119",
         "@types/node": "^20.13.0",
         "@vercel/style-guide": "^6.0.0",
