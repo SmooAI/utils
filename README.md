@@ -87,6 +87,9 @@ pnpm add @smooai/utils
 #### Data Validation
 
 - `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting
+- `handleSchemaValidation` - Type-safe validator for Standard Schema with human-readable error messages
+- `formatStandardSchemaErrorToHumanReadable` - Formats Standard Schema validation issues into readable messages
+- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages
 
 #### Utilities
 

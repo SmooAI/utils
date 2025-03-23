@@ -2,6 +2,7 @@ import { defineConfig, type Options } from 'tsup';
 
 export default defineConfig((options: Options) => ({
     entry: [
+        'src/validation/standardSchema.ts',
         'src/validation/phoneNumber.ts',
         'src/utils/sleep.ts',
         'src/scripts/createEntryPoints.ts',
