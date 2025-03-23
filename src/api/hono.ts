@@ -9,6 +9,7 @@ import { handle, LambdaEvent, LambdaContext } from 'hono/aws-lambda';
 import AwsLambdaLogger from '@smooai/logger/AwsLambdaLogger';
 import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
 import { isRunningLocally } from '@/env/env';
+import { HumanReadableSchemaError } from '@/validation/standardSchema';
 
 const logger = new AwsLambdaLogger();
 
@@ -32,7 +33,13 @@ export function createAwsLambdaHonoApp(appFunction: (app: Hono) => Hono): Return
     }
 
     app.onError((error) => {
-        if (error instanceof ZodError) {
+        if (error instanceof HumanReadableSchemaError) {
+            logger.error(error, `A schema validation error occurred: ${error.message}`);
+            throw new HTTPException(400, {
+                cause: error,
+                message: error.message,
+            });
+        } else if (error instanceof ZodError) {
             const validationError = fromZodError(error);
             logger.error(error, `A validation error occurred: ${validationError.toString()}`);
             throw new HTTPException(400, {
