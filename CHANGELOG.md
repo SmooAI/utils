@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.18
+
+### Patch Changes
+
+- 476cbf6: Fix createEntryPoints to export index correctly.
+
 ## 1.0.17
 
 ### Patch Changes
