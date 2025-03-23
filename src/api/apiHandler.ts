@@ -5,6 +5,7 @@ import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 import { ApiError } from '@/api/ApiError';
 import { errorHandler } from '@/error/errorHandler';
+import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsLambdaLogger';
 const logger = new ServerLogger();
 
@@ -39,6 +40,18 @@ export async function lambdaApiHandler<T = any>(
                     error: { message: error.message, statusText: error.statusText },
                 }),
                 statusCode: error.status,
+                headers: { 'Content-type': 'application/json' },
+            };
+        } else if (error instanceof HumanReadableSchemaError) {
+            logger.error(error, `A schema validation error occurred: ${error.message}`);
+            return {
+                body: JSON.stringify({
+                    error: {
+                        message: error.message,
+                        statusText: getReasonPhrase(StatusCodes.BAD_REQUEST),
+                    },
+                }),
+                statusCode: StatusCodes.BAD_REQUEST,
                 headers: { 'Content-type': 'application/json' },
             };
         } else if (error instanceof ZodError) {
@@ -99,6 +112,8 @@ export async function eventBridgeHandler(
     } catch (error) {
         if (error instanceof ApiError) {
             logger.error(error, `An API error occurred: Status: ${error.status} (${error.statusText}); Message: ${error.message}`);
+        } else if (error instanceof HumanReadableSchemaError) {
+            logger.error(error, `A schema validation error occurred: ${error.message}`);
         } else if (error instanceof ZodError) {
             const validationError = fromZodError(error);
             logger.error(error, `A validation error occurred: ${validationError}`);
@@ -127,6 +142,8 @@ export async function sqsHandler(
     } catch (error) {
         if (error instanceof ApiError) {
             logger.error(error, `An API error occurred: Status: ${error.status} (${error.statusText}); Message: ${error.message}`);
+        } else if (error instanceof HumanReadableSchemaError) {
+            logger.error(error, `A schema validation error occurred: ${error.message}`);
         } else if (error instanceof ZodError) {
             const validationError = fromZodError(error);
             logger.error(error, `A validation error occurred: ${validationError}`);

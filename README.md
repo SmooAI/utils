@@ -61,49 +61,95 @@ pnpm add @smooai/utils
 
 #### API Handling
 
-- `ApiError` - Custom error class for handling API-specific errors with status codes
-- `apiHandler` - Lambda function wrapper for standardized API error handling and responses
-- `createAwsLambdaHonoApp` - Factory for creating Hono apps configured for AWS Lambda
+- `ApiError` - Custom error class for handling API-specific errors with status codes and standardized error responses
+- `apiHandler` - Lambda function wrapper for standardized API error handling and responses, supporting both synchronous and asynchronous handlers
+- `createAwsLambdaHonoApp` - Factory for creating Hono apps configured for AWS Lambda with built-in request ID tracking, logging, and error handling
 
 #### Collections
 
-- `CaseInsensitiveMap` - Map implementation with case-insensitive string keys
-- `CaseInsensitiveSet` - Set implementation with case-insensitive string values
+- `CaseInsensitiveMap` - Map implementation with case-insensitive string keys, perfect for HTTP headers and configuration management
+- `CaseInsensitiveSet` - Set implementation with case-insensitive string values, useful for unique string collections where case doesn't matter
 
 #### Error Handling
 
-- `errorHandler` - Generic error handler with logging and type-specific error processing
+- `errorHandler` - Generic error handler with logging and type-specific error processing, supporting both synchronous and asynchronous operations
+- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages and detailed validation information
 
 #### File Operations
 
-- `findFile` - Async utility to find files in parent directories
-- `findFileSync` - Synchronous version of findFile
+- `findFile` - Async utility to find files in parent directories, useful for locating configuration files or project roots
+- `findFileSync` - Synchronous version of findFile for simpler use cases
 
 #### Environment
 
-- `isRunningLocally` - Check if code is running in local development
-- `isRunningInProd` - Check if code is running in production
+- `isRunningLocally` - Check if code is running in local development environment
+- `isRunningInProd` - Check if code is running in production environment
 
 #### Data Validation
 
-- `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting
-- `handleSchemaValidation` - Type-safe validator for Standard Schema with human-readable error messages
-- `formatStandardSchemaErrorToHumanReadable` - Formats Standard Schema validation issues into readable messages
-- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages
+- `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting, ensuring consistent phone number formats across the application
+- `handleSchemaValidation` - Type-safe validator for Standard Schema with human-readable error messages, supporting both synchronous and asynchronous validation
+- `formatStandardSchemaErrorToHumanReadable` - Formats Standard Schema validation issues into readable messages with field paths and error details
+- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages and access to original validation details
 
 #### Utilities
 
-- `sleep` - Promise-based delay function
+- `sleep` - Promise-based delay function for rate limiting, testing, and async operations
 
 ### Features
 
-- AWS Lambda integration
-- Standardized error handling
-- Case-insensitive collections
-- File system utilities
-- Environment detection
-- Data validation tools
-- HTTP request handling with Hono
+- **AWS Lambda Integration**
+
+    - Full support for AWS Lambda functions with proper error handling
+    - Built-in request ID tracking and logging
+    - Support for API Gateway, EventBridge, and SQS events
+
+- **Standardized Error Handling**
+
+    - Consistent error handling across all handlers
+    - Human-readable error messages
+    - Proper error logging with context
+    - Support for API errors, validation errors, and unexpected errors
+
+- **Case-insensitive Collections**
+
+    - Optimized for HTTP headers and configuration
+    - Type-safe implementations
+    - Full Map and Set API support
+
+- **File System Utilities**
+
+    - Async and sync file finding capabilities
+    - Parent directory traversal
+    - Configuration file location support
+
+- **Environment Detection**
+
+    - Simple environment checks
+    - Type-safe environment variables
+    - Development vs production detection
+
+- **Data Validation Tools**
+
+    - Phone number validation and formatting
+    - Standard Schema validation with type safety
+    - Human-readable validation errors
+    - Support for both Zod and Standard Schema
+
+- **HTTP Request Handling**
+    - Hono integration for AWS Lambda
+    - Built-in middleware for logging and request tracking
+    - Pretty JSON formatting in development
+    - Standardized error responses
+
+### Key Benefits
+
+- **Type Safety**: Full TypeScript support with proper type inference
+- **Developer Experience**: Human-readable errors and consistent APIs
+- **Production Ready**: Built-in logging, error handling, and monitoring
+- **AWS Integration**: Seamless integration with AWS Lambda and related services
+- **Validation**: Robust data validation with clear error messages
+- **Flexibility**: Support for both sync and async operations
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
