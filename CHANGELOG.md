@@ -1,5 +1,19 @@
 # @smooai/utils
 
+## 1.0.19
+
+### Patch Changes
+
+- 3d2006b: Add Standard Schema validation utilities
+
+    - Introduced `handleSchemaValidation` for type-safe validation with human-readable error messages.
+    - Added `formatStandardSchemaErrorToHumanReadable` to format validation issues.
+    - Created `HumanReadableSchemaError` class to wrap schema errors with user-friendly messages.
+    - Updated `README.md` to document new validation functions.
+    - Added tests for the new validation utilities in `standardSchema.spec.ts`.
+
+- 3d2006b: Fix createEntryPoints to export index correctly.
+
 ## 1.0.18
 
 ### Patch Changes
