@@ -47,6 +47,16 @@ export default class UpdateTsupConfig extends Command {
             };
         });
 
+        // Add root exports if src/index.ts exists
+        if (files.includes('src/index.ts')) {
+            exports['.'] = {
+                types: './dist/index.d.ts',
+                import: './dist/index.mjs',
+                require: './dist/index.js',
+                default: './dist/index.js',
+            };
+        }
+
         return exports;
     }
 

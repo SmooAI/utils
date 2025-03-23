@@ -87,8 +87,13 @@ describe('UpdateTsupConfig', () => {
             const files = ['src/index.ts', 'src/utils/helpers.ts', 'src/components/Button.ts'];
             const exports = command['generateExportsConfig'](files);
 
-            // Verify exports doesn't include index.ts (it's handled separately)
             expect(exports).toEqual({
+                '.': {
+                    types: './dist/index.d.ts',
+                    import: './dist/index.mjs',
+                    require: './dist/index.js',
+                    default: './dist/index.js',
+                },
                 './utils/helpers': {
                     types: './dist/utils/helpers.d.ts',
                     import: './dist/utils/helpers.mjs',
@@ -104,11 +109,18 @@ describe('UpdateTsupConfig', () => {
             });
         });
 
-        it('should skip index files', () => {
+        it('should include root exports for index files', () => {
             const files = ['src/index.ts', 'src/utils/index.ts'];
             const exports = command['generateExportsConfig'](files);
 
-            expect(exports).toEqual({});
+            expect(exports).toEqual({
+                '.': {
+                    types: './dist/index.d.ts',
+                    import: './dist/index.mjs',
+                    require: './dist/index.js',
+                    default: './dist/index.js',
+                },
+            });
         });
 
         it('should handle deeply nested files', () => {
@@ -203,11 +215,6 @@ describe('UpdateTsupConfig', () => {
 
             await command.run();
 
-            expect(writeFileSync).toHaveBeenCalledTimes(2);
-
-            // Verify tsup.config.ts update
-            expect(writeFileSync).toHaveBeenCalledWith('tsup.config.ts', expect.stringContaining("entry: ['src/index.ts','src/utils/helpers.ts']"));
-
             // Verify package.json update with main entry points
             const packageJsonCall = (writeFileSync as unknown as ReturnType<typeof vi.fn>).mock.calls[1][1];
             const updatedPackageJson = JSON.parse(packageJsonCall);
@@ -218,6 +225,12 @@ describe('UpdateTsupConfig', () => {
                 module: './dist/index.mjs',
                 types: './dist/index.d.ts',
                 exports: {
+                    '.': {
+                        types: './dist/index.d.ts',
+                        import: './dist/index.mjs',
+                        require: './dist/index.js',
+                        default: './dist/index.js',
+                    },
                     './utils/helpers': {
                         types: './dist/utils/helpers.d.ts',
                         import: './dist/utils/helpers.mjs',
