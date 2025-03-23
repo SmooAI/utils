@@ -24,6 +24,12 @@
         "url": "https://smooai.com"
     },
     "exports": {
+        "./validation/standardSchema": {
+            "types": "./dist/validation/standardSchema.d.ts",
+            "import": "./dist/validation/standardSchema.mjs",
+            "require": "./dist/validation/standardSchema.js",
+            "default": "./dist/validation/standardSchema.js"
+        },
         "./validation/phoneNumber": {
             "types": "./dist/validation/phoneNumber.d.ts",
             "import": "./dist/validation/phoneNumber.mjs",
@@ -116,6 +122,8 @@
         "@oclif/plugin-help": "^6.2.26",
         "@oclif/plugin-plugins": "^5.4.34",
         "@smooai/logger": "^1.0.16",
+        "@standard-schema/spec": "^1.0.0",
+        "@standard-schema/utils": "^0.3.0",
         "find-up": "^7.0.0",
         "hono": "^4.7.2",
         "http-status-codes": "^2.3.0",

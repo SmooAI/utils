@@ -21,6 +21,12 @@ importers:
       '@smooai/logger':
         specifier: ^1.0.16
         version: 1.0.16
+      '@standard-schema/spec':
+        specifier: ^1.0.0
+        version: 1.0.0
+      '@standard-schema/utils':
+        specifier: ^0.3.0
+        version: 0.3.0
       find-up:
         specifier: ^7.0.0
         version: 7.0.0
@@ -33,9 +39,6 @@ importers:
       libphonenumber-js:
         specifier: ^1.12.4
         version: 1.12.5
-      zod:
-        specifier: ^3.24.2
-        version: 3.24.2
       zod-validation-error:
         specifier: ^3.4.0
         version: 3.4.0(zod@3.24.2)
@@ -91,6 +94,9 @@ importers:
       vitest:
         specifier: ^3.0.7
         version: 3.0.8(@types/node@20.17.24)
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
 
 packages:
 
@@ -1084,6 +1090,12 @@ packages:
   '@smooai/logger@1.0.16':
     resolution: {integrity: sha512-dIgI/cYwQez+UxgUz+1J6vroR2ipGdgDlS91x4NoDQDsCLBKRrW7tgKXf8gTMSjPTzR/eKdwUCZehINpEXGHTg==}
     engines: {node: '>=20.0.0'}
+
+  '@standard-schema/spec@1.0.0':
+    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
+
+  '@standard-schema/utils@0.3.0':
+    resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -5092,6 +5104,10 @@ snapshots:
       uuid: 9.0.1
     transitivePeerDependencies:
       - aws-crt
+
+  '@standard-schema/spec@1.0.0': {}
+
+  '@standard-schema/utils@0.3.0': {}
 
   '@tsconfig/node10@1.0.11': {}
 
