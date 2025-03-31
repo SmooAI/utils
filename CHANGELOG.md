@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.20
+
+### Patch Changes
+
+- f6407cb: Updated all vite dependencies.
+
 ## 1.0.19
 
 ### Patch Changes
