@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- ok */
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createAwsLambdaHonoApp } from './hono';
-import { Hono } from 'hono';
-import { z } from 'zod';
 import * as env from '@/env/env';
+import { Hono } from 'hono';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { z } from 'zod';
+import { createAwsLambdaHonoApp } from './hono';
 
 // Mock dependencies
 vi.mock('@/env/env');

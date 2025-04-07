@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'vitest';
 import { CaseInsensitiveMap } from './CaseInsensitiveMap';
-import { describe, it, expect } from 'vitest';
 
 describe('CaseInsensitiveMap', () => {
     it('should create an empty map', () => {

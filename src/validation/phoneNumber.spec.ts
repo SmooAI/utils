@@ -1,6 +1,6 @@
-import { describe, it, expect, vi } from 'vitest';
-import { validateAndTransformPhoneNumber } from './phoneNumber';
+import { describe, expect, it, vi } from 'vitest';
 import { RefinementCtx } from 'zod';
+import { validateAndTransformPhoneNumber } from './phoneNumber';
 
 describe('validateAndTransformPhoneNumber', () => {
     // Mock RefinementCtx

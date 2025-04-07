@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest';
-import { z } from 'zod';
 import { StandardSchemaV1 } from '@standard-schema/spec';
 import { SchemaError } from '@standard-schema/utils';
-import { handleSchemaValidation, formatStandardSchemaErrorToHumanReadable, HumanReadableSchemaError } from './standardSchema';
+import { describe, expect, it } from 'vitest';
+import { z } from 'zod';
+import { formatStandardSchemaErrorToHumanReadable, handleSchemaValidation, HumanReadableSchemaError } from './standardSchema';
 
 describe('Standard Schema Validation', () => {
     // Test schema using Zod (which implements Standard Schema)

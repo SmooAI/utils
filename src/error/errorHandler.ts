@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
-
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsLambdaLogger';
+import { ZodError } from 'zod';
+import { fromZodError } from 'zod-validation-error';
+
 const logger = new ServerLogger();
 
 export async function errorHandler<T extends any[] = any[], R = any>(

@@ -1,7 +1,7 @@
-import { Command, Flags } from '@oclif/core';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { globSync } from 'glob';
 import path from 'path';
+import { Command, Flags } from '@oclif/core';
+import { globSync } from 'glob';
 
 export default class UpdateTsupConfig extends Command {
     static description = 'Update tsup.config.ts entry field and package.json exports based on provided patterns';

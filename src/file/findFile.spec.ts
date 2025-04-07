@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach, afterEach, Mock } from 'vitest';
-import { findFile, findFileSync } from './findFile';
 import { findUp, findUpSync } from 'find-up';
+import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import { findFile, findFileSync } from './findFile';
 
 // Mock the find-up package
 vi.mock('find-up', () => ({
