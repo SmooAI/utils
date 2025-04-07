@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.0.21
+
+### Patch Changes
+
+- 36a4545: Update prettier plugins.
+
 ## 1.0.20
 
 ### Patch Changes
