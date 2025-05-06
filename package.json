@@ -95,8 +95,17 @@
             "import": "./dist/api/ApiError.mjs",
             "require": "./dist/api/ApiError.js",
             "default": "./dist/api/ApiError.js"
+        },
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
         }
     },
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "bin": {
         "create-entry-points": "./dist/scripts/createEntryPoints.js"
     },
