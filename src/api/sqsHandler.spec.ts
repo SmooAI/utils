@@ -41,7 +41,8 @@ describe('sqsHandler', () => {
             Records: [createMockSQSRecord('msg1', JSON.stringify({ test: 'data' }))],
         };
 
-        await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        await handler(event, mockContext);
 
         expect(mockHandler).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -60,7 +61,8 @@ describe('sqsHandler', () => {
         const apiError = new ApiError(400, 'Bad Request');
         mockHandler.mockRejectedValueOnce(apiError);
 
-        const result = await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        const result = await handler(event, mockContext);
 
         expect(result.batchItemFailures).toHaveLength(1);
         expect(result.batchItemFailures[0].itemIdentifier).toBe('msg1');
@@ -75,7 +77,8 @@ describe('sqsHandler', () => {
         const humanReadableError = new HumanReadableSchemaError(schemaError);
         mockHandler.mockRejectedValueOnce(humanReadableError);
 
-        const result = await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        const result = await handler(event, mockContext);
 
         expect(result.batchItemFailures).toHaveLength(1);
         expect(result.batchItemFailures[0].itemIdentifier).toBe('msg1');
@@ -89,7 +92,8 @@ describe('sqsHandler', () => {
         const zodError = new ZodError([]);
         mockHandler.mockRejectedValueOnce(zodError);
 
-        const result = await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        const result = await handler(event, mockContext);
 
         expect(result.batchItemFailures).toHaveLength(1);
         expect(result.batchItemFailures[0].itemIdentifier).toBe('msg1');
@@ -103,7 +107,8 @@ describe('sqsHandler', () => {
         const error = new Error('General error');
         mockHandler.mockRejectedValueOnce(error);
 
-        const result = await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        const result = await handler(event, mockContext);
 
         expect(result.batchItemFailures).toHaveLength(1);
         expect(result.batchItemFailures[0].itemIdentifier).toBe('msg1');
@@ -114,7 +119,8 @@ describe('sqsHandler', () => {
             Records: [createMockSQSRecord('msg1', '')],
         };
 
-        await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        await handler(event, mockContext);
 
         expect(mockHandler).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -132,7 +138,8 @@ describe('sqsHandler', () => {
 
         mockHandler.mockResolvedValueOnce(undefined).mockRejectedValueOnce(new Error('Failed'));
 
-        const result = await sqsHandler(event, mockContext, mockHandler);
+        const handler = await sqsHandler(mockHandler);
+        const result = await handler(event, mockContext);
 
         expect(result.batchItemFailures).toHaveLength(1);
         expect(result.batchItemFailures[0].itemIdentifier).toBe('msg2');
