@@ -78,6 +78,12 @@
             "require": "./dist/collections/CaseInsensitiveMap.js",
             "default": "./dist/collections/CaseInsensitiveMap.js"
         },
+        "./api/sqsHandler": {
+            "types": "./dist/api/sqsHandler.d.ts",
+            "import": "./dist/api/sqsHandler.mjs",
+            "require": "./dist/api/sqsHandler.js",
+            "default": "./dist/api/sqsHandler.js"
+        },
         "./api/hono": {
             "types": "./dist/api/hono.d.ts",
             "import": "./dist/api/hono.mjs",
@@ -130,7 +136,7 @@
         "@oclif/core": "^2.0.0",
         "@oclif/plugin-help": "^6.2.26",
         "@oclif/plugin-plugins": "^5.4.34",
-        "@smooai/logger": "^1.0.21",
+        "@smooai/logger": "^1.0.24",
         "@standard-schema/spec": "^1.0.0",
         "@standard-schema/utils": "^0.3.0",
         "find-up": "^7.0.0",

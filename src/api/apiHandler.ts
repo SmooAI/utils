@@ -3,7 +3,7 @@ import { ApiError } from '@/api/ApiError';
 import { errorHandler } from '@/error/errorHandler';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsLambdaLogger';
-import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2, Context, EventBridgeEvent, SQSEvent } from 'aws-lambda';
+import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2, Context, EventBridgeEvent } from 'aws-lambda';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
@@ -122,42 +122,6 @@ export async function eventBridgeHandler(
             logger.error(error, `An unexpected error occurred: ${error.message}`);
         } else {
             logger.error(error, `An unexpected error occurred: ${error}`);
-        }
-    }
-}
-
-export async function sqsHandler(
-    event: SQSEvent,
-    context: Context,
-    handler: (event: SQSEvent, context: Context) => Promise<PromiseSettledResult<void>[]>,
-): Promise<PromiseSettledResult<void>[]> {
-    try {
-        logger.addLambdaContext(undefined, context);
-        return (await errorHandler<[SQSEvent, Context], void>(
-            async (event: SQSEvent, context: Context) => {
-                return await handler(event, context);
-            },
-            event,
-            context,
-        )) as PromiseSettledResult<void>[];
-    } catch (error) {
-        if (error instanceof ApiError) {
-            logger.error(error, `An API error occurred: Status: ${error.status} (${error.statusText}); Message: ${error.message}`);
-        } else if (error instanceof HumanReadableSchemaError) {
-            logger.error(error, `A schema validation error occurred: ${error.message}`);
-        } else if (error instanceof ZodError) {
-            const validationError = fromZodError(error);
-            logger.error(error, `A validation error occurred: ${validationError}`);
-        } else if (error instanceof Error) {
-            logger.error(error, `An unexpected error occurred: ${error.message}`);
-        } else {
-            logger.error(error, `An unexpected error occurred: ${error}`);
-        }
-
-        if (event.Records?.length) {
-            return Promise.allSettled(event.Records.map((_record) => Promise.reject(error)));
-        } else {
-            return Promise.reject(error);
         }
     }
 }
