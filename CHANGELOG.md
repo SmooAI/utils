@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.1
+
+### Patch Changes
+
+- 132d299: Fixed sqsHandler and updated createEntryPoints to have wildcard exports intead of discrete as well as adding typesVersions to package.json.
+
 ## 1.2.0
 
 ### Minor Changes
