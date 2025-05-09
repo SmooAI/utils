@@ -55,36 +55,21 @@ describe('UpdateTsupConfig', () => {
     });
 
     describe('generateExportsConfig', () => {
-        it('should generate correct exports for root-level files', () => {
+        it('should generate correct exports with wildcard pattern', () => {
             const files = ['src/example.ts'];
             const exports = command['generateExportsConfig'](files);
 
             expect(exports).toEqual({
-                './example': {
-                    types: './dist/example.d.ts',
-                    import: './dist/example.mjs',
-                    require: './dist/example.js',
-                    default: './dist/example.js',
+                './*': {
+                    types: './dist/*.d.ts',
+                    import: './dist/*.mjs',
+                    require: './dist/*.js',
                 },
             });
         });
 
-        it('should generate correct exports for nested folder files', () => {
-            const files = ['src/utils/helpers.ts'];
-            const exports = command['generateExportsConfig'](files);
-
-            expect(exports).toEqual({
-                './utils/helpers': {
-                    types: './dist/utils/helpers.d.ts',
-                    import: './dist/utils/helpers.mjs',
-                    require: './dist/utils/helpers.js',
-                    default: './dist/utils/helpers.js',
-                },
-            });
-        });
-
-        it('should handle multiple files in different locations', () => {
-            const files = ['src/index.ts', 'src/utils/helpers.ts', 'src/components/Button.ts'];
+        it('should include root exports when index.ts exists', () => {
+            const files = ['src/index.ts', 'src/utils/helpers.ts'];
             const exports = command['generateExportsConfig'](files);
 
             expect(exports).toEqual({
@@ -94,45 +79,10 @@ describe('UpdateTsupConfig', () => {
                     require: './dist/index.js',
                     default: './dist/index.js',
                 },
-                './utils/helpers': {
-                    types: './dist/utils/helpers.d.ts',
-                    import: './dist/utils/helpers.mjs',
-                    require: './dist/utils/helpers.js',
-                    default: './dist/utils/helpers.js',
-                },
-                './components/Button': {
-                    types: './dist/components/Button.d.ts',
-                    import: './dist/components/Button.mjs',
-                    require: './dist/components/Button.js',
-                    default: './dist/components/Button.js',
-                },
-            });
-        });
-
-        it('should include root exports for index files', () => {
-            const files = ['src/index.ts', 'src/utils/index.ts'];
-            const exports = command['generateExportsConfig'](files);
-
-            expect(exports).toEqual({
-                '.': {
-                    types: './dist/index.d.ts',
-                    import: './dist/index.mjs',
-                    require: './dist/index.js',
-                    default: './dist/index.js',
-                },
-            });
-        });
-
-        it('should handle deeply nested files', () => {
-            const files = ['src/components/forms/validation/rules.ts'];
-            const exports = command['generateExportsConfig'](files);
-
-            expect(exports).toEqual({
-                './components/forms/validation/rules': {
-                    types: './dist/components/forms/validation/rules.d.ts',
-                    import: './dist/components/forms/validation/rules.mjs',
-                    require: './dist/components/forms/validation/rules.js',
-                    default: './dist/components/forms/validation/rules.js',
+                './*': {
+                    types: './dist/*.d.ts',
+                    import: './dist/*.mjs',
+                    require: './dist/*.js',
                 },
             });
         });
@@ -155,51 +105,16 @@ describe('UpdateTsupConfig', () => {
             expect(writeFileSync).toHaveBeenCalledWith('tsup.config.ts', expect.stringContaining("entry: ['src/example.ts','src/utils/helpers.ts']"));
 
             // Verify package.json update
-            expect(writeFileSync).toHaveBeenCalledWith('package.json', expect.stringContaining('"exports"'));
-        });
-
-        it('should handle entry points all in src/ directory', async () => {
-            const mockFiles = ['src/component1.ts', 'src/component2.ts', 'src/component3.ts'];
-            const mockTsupConfig = 'export default { entry: [], }';
-            const mockPackageJson = '{"name": "test", "exports": {}}';
-
-            (globSync as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockFiles);
-            (readFileSync as unknown as ReturnType<typeof vi.fn>).mockReturnValueOnce(mockTsupConfig).mockReturnValueOnce(mockPackageJson);
-
-            await command.run();
-
-            expect(writeFileSync).toHaveBeenCalledTimes(2);
-
-            // Verify tsup.config.ts update
-            expect(writeFileSync).toHaveBeenCalledWith(
-                'tsup.config.ts',
-                expect.stringContaining("entry: ['src/component1.ts','src/component2.ts','src/component3.ts']"),
-            );
-
-            // Verify package.json update
             const packageJsonCall = (writeFileSync as unknown as ReturnType<typeof vi.fn>).mock.calls[1][1];
             const updatedPackageJson = JSON.parse(packageJsonCall);
 
             expect(updatedPackageJson).toEqual({
                 name: 'test',
                 exports: {
-                    './component1': {
-                        types: './dist/component1.d.ts',
-                        import: './dist/component1.mjs',
-                        require: './dist/component1.js',
-                        default: './dist/component1.js',
-                    },
-                    './component2': {
-                        types: './dist/component2.d.ts',
-                        import: './dist/component2.mjs',
-                        require: './dist/component2.js',
-                        default: './dist/component2.js',
-                    },
-                    './component3': {
-                        types: './dist/component3.d.ts',
-                        import: './dist/component3.mjs',
-                        require: './dist/component3.js',
-                        default: './dist/component3.js',
+                    './*': {
+                        types: './dist/*.d.ts',
+                        import: './dist/*.mjs',
+                        require: './dist/*.js',
                     },
                 },
             });
@@ -231,11 +146,10 @@ describe('UpdateTsupConfig', () => {
                         require: './dist/index.js',
                         default: './dist/index.js',
                     },
-                    './utils/helpers': {
-                        types: './dist/utils/helpers.d.ts',
-                        import: './dist/utils/helpers.mjs',
-                        require: './dist/utils/helpers.js',
-                        default: './dist/utils/helpers.js',
+                    './*': {
+                        types: './dist/*.d.ts',
+                        import: './dist/*.mjs',
+                        require: './dist/*.js',
                     },
                 },
             });

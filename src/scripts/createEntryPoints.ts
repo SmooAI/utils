@@ -1,5 +1,4 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import path from 'path';
 import { Command, Flags } from '@oclif/core';
 import { globSync } from 'glob';
 
@@ -26,27 +25,6 @@ export default class UpdateTsupConfig extends Command {
     private generateExportsConfig(files: string[]) {
         const exports: Record<string, unknown> = {};
 
-        files.forEach((file) => {
-            const dirname = path.dirname(file).replace('src/', '');
-            const basename = path.basename(file, '.ts');
-
-            // Skip index files as they'll be handled separately
-            if (basename === 'index') return;
-
-            // If the file is directly in src or root, use just the basename
-            const exportPath = dirname === '.' || dirname === 'src' ? `./${basename}` : `./${dirname}/${basename}`;
-
-            // For files directly in src or root, use dist/basename, otherwise keep the directory structure
-            const distBasePath = dirname === '.' || dirname === 'src' ? `./dist/${basename}` : `./dist/${dirname}/${basename}`;
-
-            exports[exportPath] = {
-                types: `${distBasePath}.d.ts`,
-                import: `${distBasePath}.mjs`,
-                require: `${distBasePath}.js`,
-                default: `${distBasePath}.js`,
-            };
-        });
-
         // Add root exports if src/index.ts exists
         if (files.includes('src/index.ts')) {
             exports['.'] = {
@@ -56,6 +34,12 @@ export default class UpdateTsupConfig extends Command {
                 default: './dist/index.js',
             };
         }
+
+        exports['./*'] = {
+            types: './dist/*.d.ts',
+            import: './dist/*.mjs',
+            require: './dist/*.js',
+        };
 
         return exports;
     }
