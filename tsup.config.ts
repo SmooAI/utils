@@ -12,6 +12,7 @@ export default defineConfig((options: Options) => ({
         'src/env/env.ts',
         'src/collections/CaseInsensitiveSet.ts',
         'src/collections/CaseInsensitiveMap.ts',
+        'src/api/sqsHandler.ts',
         'src/api/hono.ts',
         'src/api/apiHandler.ts',
         'src/api/ApiError.ts',
