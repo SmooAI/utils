@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.2.0
+
+### Minor Changes
+
+- a9f0f2b: Add root index.ts.
+- a9f0f2b: Added sqsHandler and fixed env.ts.
+
 ## 1.1.0
 
 ### Minor Changes
