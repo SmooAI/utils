@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.2
+
+### Patch Changes
+
+- c581cb3: Add isRunningInBrowser.
+
 ## 1.2.1
 
 ### Patch Changes
