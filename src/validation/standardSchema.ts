@@ -117,3 +117,44 @@ export async function handleSchemaValidation<T extends StandardSchemaV1>(
 
     return result.value;
 }
+
+/**
+ * Synchronously validates input against a schema and returns the typed value.
+ * This function performs synchronous validation and throws a HumanReadableSchemaError
+ * if validation fails. Note that this function will throw an error if the schema
+ * requires asynchronous validation.
+ *
+ * @param schema - The Standard Schema to validate against
+ * @param input - The input value to validate
+ * @returns The validated and typed output value
+ * @throws {HumanReadableSchemaError} If validation fails
+ * @throws {Error} If the schema requires asynchronous validation
+ *
+ * @example
+ * // Basic usage
+ * const value = handleSchemaValidationSync(schema, input);
+ *
+ * // With error handling
+ * try {
+ *   const value = handleSchemaValidationSync(schema, input);
+ *   // value is properly typed as StandardSchemaV1.InferOutput<T>
+ * } catch (error) {
+ *   if (error instanceof HumanReadableSchemaError) {
+ *     console.error(error.message); // Human readable message
+ *     console.error(error.schemaError); // Original SchemaError
+ *   }
+ * }
+ */
+export function handleSchemaValidationSync<T extends StandardSchemaV1>(schema: T, input: StandardSchemaV1.InferInput<T>): StandardSchemaV1.InferOutput<T> {
+    const result = schema['~standard'].validate(input);
+    if (result instanceof Promise) {
+        throw new Error('Asynchronous validation is not supported, please use a validation library that supports synchronous validation.');
+    }
+
+    if (result.issues) {
+        const schemaError = new SchemaError(result.issues);
+        throw new HumanReadableSchemaError(schemaError);
+    }
+
+    return result.value;
+}
