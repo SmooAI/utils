@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.3
+
+### Patch Changes
+
+- f34c98c: Updated dependency.
+
 ## 1.2.2
 
 ### Patch Changes
