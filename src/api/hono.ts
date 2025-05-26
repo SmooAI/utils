@@ -1,4 +1,4 @@
-import { isRunningLocally } from '@/env/env';
+import { isRunningLocally } from '@/env';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import AwsLambdaLogger from '@smooai/logger/AwsLambdaLogger';
 import { APIGatewayProxyEventV2, Context } from 'aws-lambda';

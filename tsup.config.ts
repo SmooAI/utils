@@ -9,7 +9,7 @@ export default defineConfig((options: Options) => ({
         'src/scripts/createEntryPoints.ts',
         'src/file/findFile.ts',
         'src/error/errorHandler.ts',
-        'src/env/env.ts',
+        'src/env/index.ts',
         'src/collections/CaseInsensitiveSet.ts',
         'src/collections/CaseInsensitiveMap.ts',
         'src/api/sqsHandler.ts',
