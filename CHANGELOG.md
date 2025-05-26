@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.2.4
+
+### Patch Changes
+
+- 7fca148: Updated dependency.
+- 7fca148: Added handleSchemaValidationSync.
+
 ## 1.2.3
 
 ### Patch Changes
