@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.5
+
+### Patch Changes
+
+- a86cd4b: Change env export to index.ts so we don't have to import env/env.
+
 ## 1.2.4
 
 ### Patch Changes
