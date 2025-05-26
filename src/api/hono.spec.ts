@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- ok */
-import * as env from '@/env/env';
+import * as env from '@/env';
 import { Hono } from 'hono';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 import { createAwsLambdaHonoApp } from './hono';
 
 // Mock dependencies
-vi.mock('@/env/env');
+vi.mock('@/env');
 vi.mock('@smooai/logger/AwsLambdaLogger', () => {
     return {
         default: class MockLogger {
