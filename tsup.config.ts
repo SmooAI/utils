@@ -22,6 +22,6 @@ export default defineConfig((options: Options) => ({
     format: ['cjs', 'esm'],
     sourcemap: true,
     target: 'es2022',
-    treeShaking: true,
+    treeshake: true,
     ...options,
 }));
