@@ -4,7 +4,7 @@ export * from './utils/sleep';
 export * from './scripts/createEntryPoints';
 export * from './file/findFile';
 export * from './error/errorHandler';
-export * from './env/env';
+export * from './env';
 export * from './collections/CaseInsensitiveSet';
 export * from './collections/CaseInsensitiveMap';
 export * from './api/hono';
