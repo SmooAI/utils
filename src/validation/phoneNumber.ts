@@ -1,9 +1,9 @@
-import { E164Number, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
+import { parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
 import { RefinementCtx, z } from 'zod';
 
 export type * from 'libphonenumber-js';
 
-export function validateAndTransformPhoneNumber(value: string | undefined, context: RefinementCtx): E164Number | undefined {
+export function validateAndTransformPhoneNumber(value: string | undefined, context: RefinementCtx): string | undefined {
     let phoneNumber: PhoneNumber;
     if (!value) return undefined;
     try {
