@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.7
+
+### Patch Changes
+
+- 18e0148: Return string from validateAndTransformPhoneNumber instead of E164Number from libphonenumber-js.
+
 ## 1.2.6
 
 ### Patch Changes
