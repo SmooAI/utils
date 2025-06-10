@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.8
+
+### Patch Changes
+
+- 7d6e6d9: Fix false local environment.
+
 ## 1.2.7
 
 ### Patch Changes
