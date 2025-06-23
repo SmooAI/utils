@@ -1,6 +1,6 @@
 import { isRunningLocally } from '@/env';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import AwsLambdaLogger from '@smooai/logger/AwsLambdaLogger';
+import AwsServerLogger from '@smooai/logger/AwsServerLogger';
 import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
 import { Hono } from 'hono';
 import { handle, LambdaContext, LambdaEvent } from 'hono/aws-lambda';
@@ -11,7 +11,7 @@ import { requestId } from 'hono/request-id';
 import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 
-const logger = new AwsLambdaLogger();
+const logger = new AwsServerLogger();
 
 export function createAwsLambdaHonoApp(appFunction: (app: Hono) => Hono): ReturnType<typeof handle> {
     const app = new Hono();

@@ -7,7 +7,7 @@ import { createAwsLambdaHonoApp } from './hono';
 
 // Mock dependencies
 vi.mock('@/env');
-vi.mock('@smooai/logger/AwsLambdaLogger', () => {
+vi.mock('@smooai/logger/AwsServerLogger', () => {
     return {
         default: class MockLogger {
             info = vi.fn();
