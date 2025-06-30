@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.9
+
+### Patch Changes
+
+- 444f6c0: Update smoo dependencies.
+
 ## 1.2.8
 
 ### Patch Changes

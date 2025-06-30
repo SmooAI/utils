@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import ServerLogger from '@smooai/logger/AwsLambdaLogger';
+import ServerLogger from '@smooai/logger/AwsServerLogger';
 import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
 

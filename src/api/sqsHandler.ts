@@ -1,6 +1,6 @@
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import ServerLogger from '@smooai/logger/AwsLambdaLogger';
+import ServerLogger from '@smooai/logger/AwsServerLogger';
 import type { Context, SQSBatchItemFailure, SQSBatchResponse, SQSEvent, SQSRecord } from 'aws-lambda';
 import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
