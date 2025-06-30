@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.10
+
+### Patch Changes
+
+- 429ada4: Update dependencies.
+
 ## 1.2.9
 
 ### Patch Changes
