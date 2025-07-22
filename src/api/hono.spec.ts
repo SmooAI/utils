@@ -3,7 +3,7 @@ import * as env from '@/env';
 import { Hono } from 'hono';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import { createAwsLambdaHonoApp } from './hono';
+import { addHonoMiddleware } from './hono';
 
 // Mock dependencies
 vi.mock('@/env');
@@ -18,7 +18,7 @@ vi.mock('@smooai/logger/AwsServerLogger', () => {
     };
 });
 
-describe('createAwsLambdaHonoApp', () => {
+describe('addHonoMiddleware', () => {
     beforeEach(() => {
         // Reset mocks
         vi.clearAllMocks();
@@ -30,7 +30,7 @@ describe('createAwsLambdaHonoApp', () => {
             return app;
         };
 
-        const handler = createAwsLambdaHonoApp(appFunction);
+        const handler = addHonoMiddleware(appFunction);
         const event = {
             version: '2.0',
             rawPath: '/test',
@@ -73,7 +73,7 @@ describe('createAwsLambdaHonoApp', () => {
             return app;
         };
 
-        const handler = createAwsLambdaHonoApp(appFunction);
+        const handler = addHonoMiddleware(appFunction);
         const event = {
             version: '2.0',
             rawPath: '/validate',
@@ -108,7 +108,7 @@ describe('createAwsLambdaHonoApp', () => {
             return app;
         };
 
-        const handler = createAwsLambdaHonoApp(appFunction);
+        const handler = addHonoMiddleware(appFunction);
         const event = {
             version: '2.0',
             rawPath: '/test',
