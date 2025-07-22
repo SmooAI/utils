@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.11
+
+### Patch Changes
+
+- 02136e9: Updated readme and improved hono app handling.
+
 ## 1.2.10
 
 ### Patch Changes
