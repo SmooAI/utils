@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.12
+
+### Patch Changes
+
+- 42bb4fd: Making it easier type wise to accept Hono apps.
+
 ## 1.2.11
 
 ### Patch Changes
