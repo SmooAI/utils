@@ -41,7 +41,7 @@ Check out other SmooAI packages at [npmjs.com/org/smooai](https://www.npmjs.com/
 
 ## About @smooai/utils
 
-A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.
+**The foundation that eliminates boilerplate** - Battle-tested utilities that handle the repetitive tasks so you can focus on building features, not infrastructure.
 
 ![NPM Version](https://img.shields.io/npm/v/%40smooai%2Futils?style=for-the-badge)
 ![NPM Downloads](https://img.shields.io/npm/dw/%40smooai%2Futils?style=for-the-badge)
@@ -51,105 +51,241 @@ A collection of shared utilities and tools used across SmooAI projects. This pac
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/SmooAI/utils/release.yml?style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/SmooAI/utils?style=for-the-badge)
 
-### Installation
+### Why @smooai/utils?
+
+Ever found yourself writing the same error handler for the 50th time? Debugging Lambda functions without proper request tracking? Wrestling with phone number validation that works everywhere except production? You're not alone.
+
+**We built @smooai/utils because we were tired of:**
+
+- 🔁 Copy-pasting the same utility functions across projects
+- 🐛 Inconsistent error handling breaking production deploys
+- 🔍 Losing request context across AWS services
+- 📱 Phone numbers failing validation in different formats
+- 🗺️ HTTP headers losing their case-sensitivity battles
+- 🎯 Writing custom validators for every data type
+
+**Now, with one package, you get:**
+
+- ✅ Production-tested utilities used across all SmooAI services
+- ✅ Type-safe implementations with full TypeScript support
+- ✅ AWS Lambda integration that just works
+- ✅ Human-readable error messages your team will thank you for
+- ✅ Zero configuration needed - sensible defaults out of the box
+
+### Install
 
 ```sh
 pnpm add @smooai/utils
 ```
 
-### Available Utilities
+## Real-World Solutions
 
-#### API Handling
+### 🚀 Lambda Error Handling That Actually Works
 
-- `ApiError` - Custom error class for handling API-specific errors with status codes and standardized error responses
-- `apiHandler` - Lambda function wrapper for standardized API error handling and responses, supporting both synchronous and asynchronous handlers
-- `createAwsLambdaHonoApp` - Factory for creating Hono apps configured for AWS Lambda with built-in request ID tracking, logging, and error handling
+Stop writing try-catch blocks in every Lambda function. Our battle-tested `apiHandler` does it all:
 
-#### Collections
+```typescript
+import { apiHandler } from '@smooai/utils';
 
-- `CaseInsensitiveMap` - Map implementation with case-insensitive string keys, perfect for HTTP headers and configuration management
-- `CaseInsensitiveSet` - Set implementation with case-insensitive string values, useful for unique string collections where case doesn't matter
+// Before: Boilerplate everywhere
+export const handler = async (event, context) => {
+    try {
+        // Parse body
+        // Validate input
+        // Handle errors
+        // Format response
+        // Log everything
+    } catch (error) {
+        // More error handling
+    }
+};
 
-#### Error Handling
+// After: Focus on your logic
+export const handler = apiHandler(async (event, context) => {
+    const user = await createUser(event.body);
+    return { statusCode: 201, body: user };
+});
+// Automatic error handling, logging, and response formatting ✨
+```
 
-- `errorHandler` - Generic error handler with logging and type-specific error processing, supporting both synchronous and asynchronous operations
-- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages and detailed validation information
+### 🎯 Validation With Human-Readable Errors
 
-#### File Operations
+Your users (and your support team) deserve better than "ValidationError at path[0].nested.field":
 
-- `findFile` - Async utility to find files in parent directories, useful for locating configuration files or project roots
-- `findFileSync` - Synchronous version of findFile for simpler use cases
+```typescript
+import { handleSchemaValidation, HumanReadableSchemaError } from '@smooai/utils';
 
-#### Environment
+const userSchema = z.object({
+    email: z.string().email(),
+    phone: validateAndTransformPhoneNumber,
+    age: z.number().min(18),
+});
 
-- `isRunningLocally` - Check if code is running in local development environment
-- `isRunningInProd` - Check if code is running in production environment
+try {
+    const user = handleSchemaValidation(userSchema, data);
+    // user.phone is guaranteed to be E.164 format: +12125551234
+} catch (error) {
+    if (error instanceof HumanReadableSchemaError) {
+        console.log(error.humanReadableMessage);
+        // "Email must be a valid email address. Phone must be a valid phone number. Age must be at least 18."
+    }
+}
+```
 
-#### Data Validation
+### 🔍 Case-Insensitive Collections for HTTP Headers
 
-- `validateAndTransformPhoneNumber` - Zod validator for phone numbers with E.164 formatting, ensuring consistent phone number formats across the application
-- `handleSchemaValidation` - Type-safe validator for Standard Schema with human-readable error messages, supporting both synchronous and asynchronous validation
-- `formatStandardSchemaErrorToHumanReadable` - Formats Standard Schema validation issues into readable messages with field paths and error details
-- `HumanReadableSchemaError` - Error class that wraps Standard Schema validation errors with human-readable messages and access to original validation details
+Because `Content-Type`, `content-type`, and `CONTENT-TYPE` should all just work:
 
-#### Utilities
+```typescript
+import { CaseInsensitiveMap } from '@smooai/utils';
 
-- `sleep` - Promise-based delay function for rate limiting, testing, and async operations
+const headers = new CaseInsensitiveMap([
+    ['Content-Type', 'application/json'],
+    ['X-API-KEY', 'secret'],
+]);
 
-### Features
+headers.get('content-type'); // 'application/json' ✅
+headers.has('X-Api-Key'); // true ✅
+headers.get('CONTENT-TYPE'); // 'application/json' ✅
+```
 
-- **AWS Lambda Integration**
+### 🏭 Production-Ready Hono Apps for Lambda
 
-    - Full support for AWS Lambda functions with proper error handling
-    - Built-in request ID tracking and logging
-    - Support for API Gateway, EventBridge, and SQS events
+Set up a fully-configured API with one line:
 
-- **Standardized Error Handling**
+```typescript
+import { createAwsLambdaHonoApp } from '@smooai/utils';
 
-    - Consistent error handling across all handlers
-    - Human-readable error messages
-    - Proper error logging with context
-    - Support for API errors, validation errors, and unexpected errors
+const app = createAwsLambdaHonoApp();
 
-- **Case-insensitive Collections**
+app.get('/health', (c) => c.json({ status: 'healthy' }));
 
-    - Optimized for HTTP headers and configuration
-    - Type-safe implementations
-    - Full Map and Set API support
+app.post('/users', async (c) => {
+    // Automatic request ID tracking
+    // Built-in error handling
+    // Pretty JSON in development
+    const user = await createUser(await c.req.json());
+    return c.json(user, 201);
+});
 
-- **File System Utilities**
+export const handler = handle(app);
+```
 
-    - Async and sync file finding capabilities
-    - Parent directory traversal
-    - Configuration file location support
+### 📁 Smart File Discovery
 
-- **Environment Detection**
+Find configuration files without hardcoding paths:
 
-    - Simple environment checks
-    - Type-safe environment variables
-    - Development vs production detection
+```typescript
+import { findFile } from '@smooai/utils';
 
-- **Data Validation Tools**
+// Searches up the directory tree until it finds the file
+const configPath = await findFile('smoo.config.json');
+const packageJson = await findFile('package.json');
 
-    - Phone number validation and formatting
-    - Standard Schema validation with type safety
-    - Human-readable validation errors
-    - Support for both Zod and Standard Schema
+// Perfect for:
+// - Finding project root
+// - Loading environment-specific configs
+// - Locating test fixtures
+```
 
-- **HTTP Request Handling**
-    - Hono integration for AWS Lambda
-    - Built-in middleware for logging and request tracking
-    - Pretty JSON formatting in development
-    - Standardized error responses
+### 🌍 Environment Detection Made Simple
 
-### Key Benefits
+```typescript
+import { isRunningInProd, isRunningLocally } from '@smooai/utils';
 
-- **Type Safety**: Full TypeScript support with proper type inference
-- **Developer Experience**: Human-readable errors and consistent APIs
-- **Production Ready**: Built-in logging, error handling, and monitoring
-- **AWS Integration**: Seamless integration with AWS Lambda and related services
-- **Validation**: Robust data validation with clear error messages
-- **Flexibility**: Support for both sync and async operations
+if (isRunningLocally()) {
+    // Enable debug logging
+    // Use local database
+    // Show detailed errors
+}
+
+if (isRunningInProd()) {
+    // Use production services
+    // Enable monitoring
+    // Sanitize error messages
+}
+```
+
+## More Powerful Examples
+
+### 🛡️ Type-Safe Error Handling
+
+Transform cryptic errors into actionable messages:
+
+```typescript
+import { ApiError, errorHandler } from '@smooai/utils';
+
+const processPayment = errorHandler(
+    async (orderId: string) => {
+        // Throws ApiError with 404 status
+        if (!order) throw new ApiError('Order not found', 404);
+
+        // Validation errors become 400s with details
+        const validated = handleSchemaValidation(schema, data);
+
+        // Unexpected errors are logged and sanitized
+        return await chargeCard(order);
+    },
+    {
+        logger: console,
+        onError: (error) => notifyOps(error),
+    },
+);
+```
+
+### ⏱️ Smart Async Utilities
+
+```typescript
+import { sleep } from '@smooai/utils';
+
+// Rate limiting made easy
+for (const batch of batches) {
+    await processBatch(batch);
+    await sleep(1000); // Wait 1 second between batches
+}
+
+// Retry with exponential backoff
+async function retryWithBackoff(fn, attempts = 3) {
+    for (let i = 0; i < attempts; i++) {
+        try {
+            return await fn();
+        } catch (error) {
+            if (i === attempts - 1) throw error;
+            await sleep(Math.pow(2, i) * 1000);
+        }
+    }
+}
+```
+
+### 📞 Phone Number Validation That Works Globally
+
+```typescript
+import { validateAndTransformPhoneNumber } from '@smooai/utils';
+
+// Accepts multiple formats, outputs E.164
+const phoneSchema = z.object({
+    phone: validateAndTransformPhoneNumber,
+});
+
+phoneSchema.parse({ phone: '(212) 555-1234' });
+// ✅ { phone: '+12125551234' }
+
+phoneSchema.parse({ phone: '+44 20 7946 0958' });
+// ✅ { phone: '+442079460958' }
+
+phoneSchema.parse({ phone: '555-1234' });
+// ❌ Throws: "Phone must be a valid phone number"
+```
+
+## Built for Production
+
+Every utility in this package is:
+
+- 🔒 **Type-safe** - Full TypeScript support with strict types
+- ⚡ **Performance tested** - Optimized for real-world usage
+- 📊 **Battle-tested** - Used in production at SmooAI
+- 📚 **Well-documented** - Clear examples and use cases
+- 🔄 **Maintained** - Regular updates and improvements
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -173,10 +309,13 @@ We're currently developing our contribution processes. If you're interested in c
 
 ## Contact
 
-Brent Rager - [Email](mailto:brent@smoo.ai)
-[Instagram](https://www.instagram.com/brentragertech/)
-[LinkedIn](https://www.linkedin.com/in/brentrager/)
-[Threads](https://www.threads.net/@brentragertech)
+Brent Rager
+
+- [Email](mailto:brent@smoo.ai)
+- [LinkedIn](https://www.linkedin.com/in/brentrager/)
+- [BlueSky](https://bsky.app/profile/brentragertech.bsky.social)
+- [TikTok](https://www.tiktok.com/@brentragertech)
+- [Instagram](https://www.instagram.com/brentragertech/)
 
 Smoo Github: [https://github.com/SmooAI](https://github.com/SmooAI)
 
