@@ -59,10 +59,9 @@ export function addHonoMiddleware(appFunction: (app: Hono<any>) => Hono<any>): R
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accepting any hono generic
-export function createHonoAwsLambdaHandler(app: Hono<any>, appFunction: (app: Hono<any>) => Hono<any>): ReturnType<typeof handle> {
-    const appWithRoutes = appFunction(app);
+export function createHonoAwsLambdaHandler(app: Hono<any>): ReturnType<typeof handle> {
     return (event: LambdaEvent, lambdaContext?: LambdaContext) => {
         logger.addLambdaContext(event as unknown as APIGatewayProxyEventV2, lambdaContext as unknown as Context);
-        return handle(appWithRoutes)(event, lambdaContext);
+        return handle(app)(event, lambdaContext);
     };
 }
