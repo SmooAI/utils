@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.14
+
+### Patch Changes
+
+- 73a1151: Fixed addHonoMiddleware.
+
 ## 1.2.13
 
 ### Patch Changes
