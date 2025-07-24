@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.13
+
+### Patch Changes
+
+- 36ba26f: Fix createHonoAwsLambdaHandler.
+
 ## 1.2.12
 
 ### Patch Changes
