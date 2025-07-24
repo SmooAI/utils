@@ -14,8 +14,8 @@ import { fromZodError } from 'zod-validation-error';
 const logger = new AwsServerLogger();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accepting any hono generic
-export function addHonoMiddleware(appFunction: (app: Hono<any>) => Hono<any>): ReturnType<typeof handle> {
-    const app = new Hono();
+export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
+    const app = _app ?? new Hono();
 
     app.use(requestId());
     app.use(
@@ -51,11 +51,7 @@ export function addHonoMiddleware(appFunction: (app: Hono<any>) => Hono<any>): R
         throw error;
     });
 
-    const appWithRoutes = appFunction(app);
-    return (event: LambdaEvent, lambdaContext?: LambdaContext) => {
-        logger.addLambdaContext(event as unknown as APIGatewayProxyEventV2, lambdaContext as unknown as Context);
-        return handle(appWithRoutes)(event, lambdaContext);
-    };
+    return app;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- accepting any hono generic

@@ -3,7 +3,7 @@ import * as env from '@/env';
 import { Hono } from 'hono';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
-import { addHonoMiddleware } from './hono';
+import { addHonoMiddleware, createHonoAwsLambdaHandler } from './hono';
 
 // Mock dependencies
 vi.mock('@/env');
@@ -25,12 +25,11 @@ describe('addHonoMiddleware', () => {
     });
 
     it('should create a Hono app with middleware', async () => {
-        const appFunction = (app: Hono) => {
-            app.get('/test', (c) => c.json({ message: 'success' }));
-            return app;
-        };
+        const app = new Hono();
+        app.get('/test', (c) => c.json({ message: 'success' }));
 
-        const handler = addHonoMiddleware(appFunction);
+        const middlewaredApp = addHonoMiddleware(app);
+        const handler = createHonoAwsLambdaHandler(middlewaredApp);
         const event = {
             version: '2.0',
             rawPath: '/test',
@@ -64,16 +63,15 @@ describe('addHonoMiddleware', () => {
             name: z.string(),
         });
 
-        const appFunction = (app: Hono) => {
-            app.post('/validate', async (c) => {
-                const body = await c.req.json();
-                schema.parse(body);
-                return c.json({ success: true });
-            });
-            return app;
-        };
+        const app = new Hono();
+        app.post('/validate', async (c) => {
+            const body = await c.req.json();
+            schema.parse(body);
+            return c.json({ success: true });
+        });
 
-        const handler = addHonoMiddleware(appFunction);
+        const middlewaredApp = addHonoMiddleware(app);
+        const handler = createHonoAwsLambdaHandler(middlewaredApp);
         const event = {
             version: '2.0',
             rawPath: '/validate',
@@ -103,12 +101,11 @@ describe('addHonoMiddleware', () => {
     it('should add pretty JSON middleware when running locally', async () => {
         vi.mocked(env.isRunningLocally).mockReturnValue(true);
 
-        const appFunction = (app: Hono) => {
-            app.get('/test', (c) => c.json({ message: 'success' }));
-            return app;
-        };
+        const app = new Hono();
+        app.get('/test', (c) => c.json({ message: 'success' }));
 
-        const handler = addHonoMiddleware(appFunction);
+        const middlewaredApp = addHonoMiddleware(app);
+        const handler = createHonoAwsLambdaHandler(middlewaredApp);
         const event = {
             version: '2.0',
             rawPath: '/test',
