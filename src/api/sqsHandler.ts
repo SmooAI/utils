@@ -9,9 +9,9 @@ const logger = new ServerLogger();
 
 export type JsonSQSRecord = Omit<SQSRecord, 'body'> & { body: Record<string, unknown> };
 
-export async function sqsHandler(
+export function sqsHandler(
     handler: (event: JsonSQSRecord, context: Context) => Promise<void>,
-): Promise<(event: SQSEvent, context: Context) => Promise<SQSBatchResponse>> {
+): (event: SQSEvent, context: Context) => Promise<SQSBatchResponse> {
     return async (event: SQSEvent, context: Context) => {
         try {
             const batchItemFailures: SQSBatchItemFailure[] = [];
