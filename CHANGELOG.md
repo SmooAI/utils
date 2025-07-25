@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.15
+
+### Patch Changes
+
+- 59f43bc: Fixed sqsHandler so it is itself not async.
+
 ## 1.2.14
 
 ### Patch Changes
