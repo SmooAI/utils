@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.16
+
+### Patch Changes
+
+- 7d42720: Fix hono error handler.
+
 ## 1.2.15
 
 ### Patch Changes
