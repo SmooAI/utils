@@ -95,7 +95,14 @@ describe('addHonoMiddleware', () => {
             },
         };
 
-        await expect(handler(event as any)).rejects.toThrow('Expected string, received number');
+        const response = await handler(event as any);
+        expect(response.statusCode).toBe(400);
+        const responseBody = JSON.parse(response.body);
+        expect(responseBody.error).toContain('Expected string, received number');
+        expect(responseBody.details).toBeDefined();
+        expect(responseBody.details[0].code).toBe('invalid_type');
+        expect(responseBody.details[0].expected).toBe('string');
+        expect(responseBody.details[0].received).toBe('number');
     });
 
     it('should add pretty JSON middleware when running locally', async () => {
