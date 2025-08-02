@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.17
+
+### Patch Changes
+
+- df71a28: Fix hono logger to have more context.
+
 ## 1.2.16
 
 ### Patch Changes
