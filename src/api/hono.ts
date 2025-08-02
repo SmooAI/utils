@@ -18,14 +18,15 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
     const app = _app ?? new Hono();
 
     app.use(requestId());
-    app.use(
-        honoLogger((str, ...rest) => {
-            logger.info(str, ...rest);
-        }),
-    );
     app.use(async (c, next) => {
-        logger.addContext({
-            honoRequestId: c.get('requestId'),
+        honoLogger((str, ...rest) => {
+            const namespace = `[${c.req.method}] ${c.req.path}`;
+            logger.addRequestContext(c.req);
+            logger.addContext({
+                namespace,
+                honoRequestId: c.get('requestId'),
+            });
+            logger.info(str, ...rest);
         });
         await next();
     });
