@@ -33,22 +33,41 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
         app.use(prettyJSON());
     }
 
-    app.onError((error) => {
+    app.onError((error, c) => {
         if (error instanceof HumanReadableSchemaError) {
-            logger.error(error, `A schema validation error occurred: ${error.message}`);
-            throw new HTTPException(400, {
-                cause: error,
-                message: error.message,
-            });
+            logger.error(error, `A schema validation error occurred`);
+
+            return c.json(
+                {
+                    error: error.message,
+                    schemaError: error.schemaError,
+                },
+                400,
+            );
         } else if (error instanceof ZodError) {
             const validationError = fromZodError(error);
-            logger.error(error, `A validation error occurred: ${validationError.toString()}`);
-            throw new HTTPException(400, {
-                cause: error,
-                message: validationError.toString(),
-            });
+            logger.error(validationError, `A validation error occurred`);
+
+            return c.json(
+                {
+                    error: validationError.message,
+                    details: validationError.details,
+                },
+                400,
+            );
+        } else if (error instanceof HTTPException) {
+            logger.error(error, `An HTTP error occurred`);
+
+            return error.getResponse();
         }
-        throw error;
+
+        logger.error(error, `An unknown error occurred`);
+        return c.json(
+            {
+                error: error.message,
+            },
+            500,
+        );
     });
 
     return app;
