@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.24
+
+### Patch Changes
+
+- 277c20c: Fix namespace in hono app.
+
 ## 1.2.23
 
 ### Patch Changes
