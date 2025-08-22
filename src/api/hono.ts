@@ -19,10 +19,10 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
 
     app.use(requestId());
     app.use(async (c, next) => {
-        const namespace = `[${c.req.method}] ${c.req.path}`;
+        const namespace = `${c.req.method} ${c.req.path}`;
         logger.addRequestContext(c.req);
+        logger.setNamespace(namespace);
         logger.addContext({
-            namespace,
             honoRequestId: c.get('requestId'),
         });
         logger.info(`Request started`);
