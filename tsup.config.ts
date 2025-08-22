@@ -7,6 +7,7 @@ export default defineConfig((options: Options) => ({
         'src/validation/phoneNumber.ts',
         'src/utils/zx-factory.ts',
         'src/utils/sleep.ts',
+        'src/scripts/generate-jira-git-branch.ts',
         'src/scripts/generate-git-branch.ts',
         'src/scripts/create-entry-points.ts',
         'src/file/findFile.ts',
