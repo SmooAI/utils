@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.21
+
+### Patch Changes
+
+- 724afde: Fix generate-git-branch pulling from main.
+
 ## 1.2.20
 
 ### Patch Changes
