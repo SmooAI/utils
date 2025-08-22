@@ -47,7 +47,8 @@
         }
     },
     "bin": {
-        "create-entry-points": "./dist/scripts/createEntryPoints.js"
+        "create-entry-points": "./dist/scripts/createEntryPoints.js",
+        "generate-git-branch": "./dist/scripts/generateGitBranch.js"
     },
     "files": [
         "dist/**"
@@ -58,6 +59,7 @@
         "ci:publish": "pnpm build && pnpm changeset publish",
         "createEntryPoints": "pnpm vite-node ./src/scripts/createEntryPoints.ts -i \"src/**/*.ts\"",
         "format": "prettier --write \"**/*.{ts,tsx,md,json,js,cjs,mjs}\"",
+        "generateGitBranch": "pnpm vite-node ./src/utils/generate-git-branch.ts",
         "preinstall": "npx only-allow pnpm",
         "lint": "eslint src/",
         "lint:fix": "eslint src/ --fix",
@@ -77,8 +79,11 @@
         "hono": "^4.7.2",
         "http-status-codes": "^2.3.0",
         "libphonenumber-js": "^1.12.4",
+        "openai": "^5.15.0",
+        "picocolors": "^1.1.1",
         "zod": "^3.24.2",
-        "zod-validation-error": "^3.4.0"
+        "zod-validation-error": "^3.4.0",
+        "zx": "^8.8.1"
     },
     "devDependencies": {
         "@changesets/cli": "^2.28.1",

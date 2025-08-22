@@ -39,12 +39,21 @@ importers:
       libphonenumber-js:
         specifier: ^1.12.4
         version: 1.12.5
+      openai:
+        specifier: ^5.15.0
+        version: 5.15.0(zod@3.24.2)
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
       zod:
         specifier: ^3.24.2
         version: 3.24.2
       zod-validation-error:
         specifier: ^3.4.0
         version: 3.4.0(zod@3.24.2)
+      zx:
+        specifier: ^8.8.1
+        version: 8.8.1
     devDependencies:
       '@changesets/cli':
         specifier: ^2.28.1
@@ -2982,6 +2991,18 @@ packages:
     resolution: {integrity: sha512-VXJjc87FScF88uafS3JllDgvAm+c/Slfz06lorj2uAY34rlUu0Nt+v8wreiImcrgAjjIHp1rXpTDlLOGw29WwQ==}
     engines: {node: '>=18'}
 
+  openai@5.15.0:
+    resolution: {integrity: sha512-kcUdws8K/A8m02I+IqFBwO51gS+87GP89yWEufGbzEi8anBz4FB/bti2QxaJdGwwY4mwJGzx85XO7TuL/Tpu1w==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.23.8
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
@@ -4007,6 +4028,11 @@ packages:
 
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+
+  zx@8.8.1:
+    resolution: {integrity: sha512-qvsKBnvWHstHKCluKPlEgI/D3+mdiQyMoSSeFR8IX/aXzWIas5A297KxKgPJhuPXdrR6ma0Jzx43+GQ/8sqbrw==}
+    engines: {node: '>= 12.17.0'}
+    hasBin: true
 
 snapshots:
 
@@ -7372,6 +7398,10 @@ snapshots:
     dependencies:
       mimic-function: 5.0.1
 
+  openai@5.15.0(zod@3.24.2):
+    optionalDependencies:
+      zod: 3.24.2
+
   optionator@0.9.4:
     dependencies:
       deep-is: 0.1.4
@@ -8400,3 +8430,5 @@ snapshots:
       zod: 3.24.2
 
   zod@3.24.2: {}
+
+  zx@8.8.1: {}
