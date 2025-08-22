@@ -1,5 +1,13 @@
 # @smooai/utils
 
+## 1.2.19
+
+### Patch Changes
+
+- f5b0249: Fix hono logger to have more context.
+- f5b0249: Add utility for using AI to generate branch name, and improve hono logging.
+- f5b0249: Fix generate-git-branch bin.
+
 ## 1.2.18
 
 ### Patch Changes
