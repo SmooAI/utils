@@ -93,28 +93,61 @@ Return only the branch name, nothing else.`;
 
 async function createAndSwitchToBranch(branchName: string, options: BranchGenerationOptions = {}): Promise<void> {
     const { pullFromMain = true } = options;
-
-    console.log(`\n${pc.blue('🔄')} Creating branch: ${pc.bold(branchName)}`);
+    let hasStashed = false;
 
     try {
-        // Create and switch to the new branch using proper zx syntax
-        await $$`git checkout -b ${branchName}`;
-
         if (pullFromMain) {
-            console.log(pc.yellow('📥 Pulling latest changes from main...'));
+            console.log(pc.yellow('📥 Updating main branch with latest changes...'));
             try {
-                // First, fetch the latest changes
-                await $$`git fetch origin`;
+                // Check for uncommitted changes
+                const statusResult = await $$`git status --porcelain`;
+                const hasUncommittedChanges = statusResult.stdout.trim().length > 0;
 
-                // Then merge the latest main into the new branch
-                await $$`git merge origin/main`;
-                console.log(pc.green('✅ Successfully pulled and merged latest changes from main'));
+                if (hasUncommittedChanges) {
+                    console.log(pc.yellow('\n⚠️  You have uncommitted changes.'));
+                    const stashResponse = await requestUserInput('Would you like to stash them and continue? (y/n, default: y): ');
+
+                    if (stashResponse.toLowerCase() !== 'n' && stashResponse.toLowerCase() !== 'no') {
+                        console.log(pc.blue('📦 Stashing uncommitted changes...'));
+                        await $$`git stash push -m "Auto-stash before branch creation"`;
+                        hasStashed = true;
+                        console.log(pc.green('✅ Changes stashed successfully'));
+                    } else {
+                        console.log(pc.red('❌ Branch creation cancelled. Please commit or stash your changes manually.'));
+                        process.exit(0);
+                    }
+                }
+
+                // Switch to main branch
+                await $$`git checkout main`;
+
+                // Pull latest changes from origin/main
+                await $$`git pull origin main`;
+
+                console.log(pc.green('✅ Successfully updated main branch'));
             } catch (_error) {
-                console.warn(pc.yellow('⚠️  Warning: Could not pull from main. You may need to resolve conflicts manually.'));
+                console.warn(pc.yellow('⚠️  Warning: Could not update main branch. Continuing with current state.'));
             }
         }
 
+        console.log(`\n${pc.blue('🔄')} Creating branch: ${pc.bold(branchName)}`);
+
+        // Create and switch to the new branch from main (or current branch if pullFromMain is false)
+        await $$`git checkout -b ${branchName}`;
+
         console.log(`\n${pc.green('🎉')} Successfully created and switched to branch: ${pc.bold(pc.green(branchName))}`);
+
+        // Pop stashed changes if we stashed earlier
+        if (hasStashed) {
+            console.log(pc.blue('\n📦 Restoring stashed changes...'));
+            try {
+                await $$`git stash pop`;
+                console.log(pc.green('✅ Stashed changes restored successfully'));
+            } catch (_error) {
+                console.warn(pc.yellow('⚠️  Warning: Could not automatically restore stashed changes. Use "git stash pop" manually.'));
+            }
+        }
+
         console.log(`${pc.cyan('📝')} Ready to start working on: ${pc.bold(branchName)}`);
     } catch (_error) {
         console.error(pc.red(`Git command failed`));
