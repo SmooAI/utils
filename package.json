@@ -1,6 +1,6 @@
 {
     "name": "@smooai/utils",
-    "version": "1.2.22",
+    "version": "1.2.23",
     "description": "A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.",
     "keywords": [
         "utils",
