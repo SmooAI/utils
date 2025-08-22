@@ -1,6 +1,6 @@
 import { isRunningLocally } from '@/env';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import AwsServerLogger from '@smooai/logger/AwsServerLogger';
+import AwsServerLogger, { HttpResponse } from '@smooai/logger/AwsServerLogger';
 import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
 import { Hono } from 'hono';
 import { handle, LambdaContext, LambdaEvent } from 'hono/aws-lambda';
@@ -18,14 +18,28 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
     const app = _app ?? new Hono();
 
     app.use(requestId());
-    app.use(
+    app.use(async (c, next) => {
+        const namespace = `[${c.req.method}] ${c.req.path}`;
+        logger.addRequestContext(c.req);
+        logger.addContext({
+            namespace,
+            honoRequestId: c.get('requestId'),
+        });
+        logger.info(`Request started`);
+        await next();
+    });
+
+    app.use(async (c, next) => {
+        const start = Date.now();
+        await next();
+        const duration = Date.now() - start;
+        logger.addResponseContext(c.res as unknown as HttpResponse);
+        logger.info(`Request completed in ${duration}ms`);
+    });
+
+    app.use(async (c, next) => {
         honoLogger((str, ...rest) => {
             logger.info(str, ...rest);
-        }),
-    );
-    app.use(async (c, next) => {
-        logger.addContext({
-            honoRequestId: c.get('requestId'),
         });
         await next();
     });
