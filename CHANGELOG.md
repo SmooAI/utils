@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.22
+
+### Patch Changes
+
+- d532d91: Remove generate-git-branch hashbang.
+
 ## 1.2.21
 
 ### Patch Changes
