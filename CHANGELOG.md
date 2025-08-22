@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.26
+
+### Patch Changes
+
+- 1d81130: Update smoo logger to fix response body issue.
+
 ## 1.2.25
 
 ### Patch Changes
