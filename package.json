@@ -1,6 +1,6 @@
 {
     "name": "@smooai/utils",
-    "version": "1.2.24",
+    "version": "1.2.25",
     "description": "A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.",
     "keywords": [
         "utils",
@@ -74,7 +74,7 @@
         "@oclif/core": "^2.0.0",
         "@oclif/plugin-help": "^6.2.26",
         "@oclif/plugin-plugins": "^5.4.34",
-        "@smooai/logger": "^3.0.6",
+        "@smooai/logger": "^3.0.7",
         "@standard-schema/spec": "^1.0.0",
         "@standard-schema/utils": "^0.3.0",
         "find-up": "^7.0.0",
