@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.2.25
+
+### Patch Changes
+
+- cc5c62f: Update smoo logger.
+- 918a5ad: Improve response and duration logging.
+
 ## 1.2.24
 
 ### Patch Changes
