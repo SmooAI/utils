@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.20
+
+### Patch Changes
+
+- 71969f6: Fix generate-git-branch bin.
+
 ## 1.2.19
 
 ### Patch Changes

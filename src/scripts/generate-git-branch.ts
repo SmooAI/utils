@@ -2,7 +2,7 @@
 import { createInterface } from 'node:readline';
 import OpenAI from 'openai';
 import pc from 'picocolors';
-import { $$ } from './zx-factory';
+import { $$ } from '../utils/zx-factory';
 
 interface BranchGenerationOptions {
     pullFromMain?: boolean;

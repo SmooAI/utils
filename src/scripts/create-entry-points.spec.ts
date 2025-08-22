@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { Config } from '@oclif/core';
 import { globSync } from 'glob';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UpdateTsupConfig } from './createEntryPoints';
+import { UpdateTsupConfig } from './create-entry-points';
 
 // Mock the node:fs module
 vi.mock('node:fs', () => ({

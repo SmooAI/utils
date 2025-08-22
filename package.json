@@ -1,6 +1,6 @@
 {
     "name": "@smooai/utils",
-    "version": "1.2.19",
+    "version": "1.2.20",
     "description": "A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.",
     "keywords": [
         "utils",
@@ -47,19 +47,19 @@
         }
     },
     "bin": {
-        "create-entry-points": "./dist/scripts/createEntryPoints.js",
+        "create-entry-points": "./dist/scripts/create-entry-points.js",
         "generate-git-branch": "./dist/scripts/generate-git-branch.js"
     },
     "files": [
         "dist/**"
     ],
     "scripts": {
-        "build": "pnpm createEntryPoints && pnpm exec tsup",
+        "build": "pnpm create-entry-points && pnpm exec tsup",
         "check-all": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
         "ci:publish": "pnpm build && pnpm changeset publish",
-        "createEntryPoints": "pnpm vite-node ./src/scripts/createEntryPoints.ts -i \"src/**/*.ts\"",
+        "create-entry-points": "pnpm vite-node ./src/scripts/create-entry-points.ts -i \"src/**/*.ts\"",
         "format": "prettier --write \"**/*.{ts,tsx,md,json,js,cjs,mjs}\"",
-        "generate-git-branch": "pnpm vite-node ./src/utils/generate-git-branch.ts",
+        "generate-git-branch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
         "preinstall": "npx only-allow pnpm",
         "lint": "eslint src/",
         "lint:fix": "eslint src/ --fix",
