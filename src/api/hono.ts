@@ -28,7 +28,7 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
         });
         logger.info(`Request started`);
         await next();
-        logger.cloneAndAddResponseContext(c.res);
+        await logger.cloneAndAddResponseContext(c.res);
         logger.addTelemetryFields({
             duration: Date.now() - start,
         });
