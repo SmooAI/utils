@@ -1,4 +1,3 @@
-#!/usr/bin/env tsx
 import { createInterface } from 'node:readline';
 import OpenAI from 'openai';
 import pc from 'picocolors';
