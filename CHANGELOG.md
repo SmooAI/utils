@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.2.23
+
+### Patch Changes
+
+- 64192bf: Add generate-jira-git-branch.
+- 64192bf: Update smoo logger.
+
 ## 1.2.22
 
 ### Patch Changes
