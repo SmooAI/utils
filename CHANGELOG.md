@@ -1,5 +1,12 @@
 # @smooai/utils
 
+## 1.2.18
+
+### Patch Changes
+
+- 7bb8625: Fix hono logger to have more context.
+- 7bb8625: Add utility for using AI to generate branch name, and improve hono logging.
+
 ## 1.2.17
 
 ### Patch Changes
