@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.2.27
+
+### Patch Changes
+
+- b97ab1e: Fix response logging in hono.
+
 ## 1.2.26
 
 ### Patch Changes
