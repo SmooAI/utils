@@ -8,8 +8,7 @@ import { HTTPException } from 'hono/http-exception';
 import { logger as honoLogger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
 import { requestId } from 'hono/request-id';
-import { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import { z, ZodError } from 'zod';
 
 const logger = new AwsServerLogger();
 
@@ -57,13 +56,13 @@ export function addHonoMiddleware(_app: Hono<any>): Hono<any> {
                 400,
             );
         } else if (error instanceof ZodError) {
-            const validationError = fromZodError(error);
-            logger.error(validationError, `A validation error occurred`);
+            const prettyError = z.prettifyError(error);
+            logger.error(error, `A validation error occurred`);
 
             return c.json(
                 {
-                    error: validationError.message,
-                    details: validationError.details,
+                    error: prettyError,
+                    details: error.issues,
                 },
                 400,
             );
