@@ -4,10 +4,12 @@ import { validateAndTransformPhoneNumber } from './phoneNumber';
 
 describe('validateAndTransformPhoneNumber', () => {
     // Mock RefinementCtx
-    const createMockContext = (): RefinementCtx => ({
-        addIssue: vi.fn(),
-        path: [],
-    });
+    const createMockContext = (): RefinementCtx =>
+        ({
+            addIssue: vi.fn(),
+            value: {},
+            issues: [],
+        }) as RefinementCtx;
 
     it('should return undefined for undefined input', () => {
         const context = createMockContext();

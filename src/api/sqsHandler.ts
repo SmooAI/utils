@@ -2,8 +2,7 @@ import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsServerLogger';
 import type { Context, SQSBatchItemFailure, SQSBatchResponse, SQSEvent, SQSRecord } from 'aws-lambda';
-import { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import { z, ZodError } from 'zod';
 
 const logger = new ServerLogger();
 
@@ -31,8 +30,8 @@ export function sqsHandler(
                     } else if (error instanceof HumanReadableSchemaError) {
                         logger.error(error, `A schema validation error occurred: ${error.message}`);
                     } else if (error instanceof ZodError) {
-                        const validationError = fromZodError(error);
-                        logger.error(error, `A validation error occurred: ${validationError}`);
+                        const prettyError = z.prettifyError(error);
+                        logger.error(error, `A validation error occurred: ${prettyError}`);
                     } else if (error instanceof Error) {
                         logger.error(error, `An unexpected error occurred: ${error.message}`);
                     } else {

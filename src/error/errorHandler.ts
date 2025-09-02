@@ -2,8 +2,7 @@
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsServerLogger';
-import { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import { z, ZodError } from 'zod';
 
 const logger = new ServerLogger();
 
@@ -21,8 +20,8 @@ export async function errorHandler<T extends any[] = any[], R = any>(
             logger.error(error, `A schema validation error occurred: ${error.message}`);
             throw error;
         } else if (error instanceof ZodError) {
-            const validationError = fromZodError(error);
-            logger.error(error, `A validation error occurred: ${validationError.toString()}`);
+            const prettyError = z.prettifyError(error);
+            logger.error(error, `A validation error occurred: ${prettyError}`);
             throw error;
         } else if (error instanceof Error) {
             logger.error(error, `An unexpected error occurred: ${error.message}`);

@@ -5,8 +5,7 @@ import { HumanReadableSchemaError } from '@/validation/standardSchema';
 import ServerLogger from '@smooai/logger/AwsServerLogger';
 import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2, Context, EventBridgeEvent } from 'aws-lambda';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { ZodError } from 'zod';
-import { fromZodError } from 'zod-validation-error';
+import { z, ZodError } from 'zod';
 
 const logger = new ServerLogger();
 
@@ -56,12 +55,12 @@ export async function lambdaApiHandler<T = any>(
                 headers: { 'Content-type': 'application/json' },
             };
         } else if (error instanceof ZodError) {
-            const validationError = fromZodError(error);
-            logger.error(error, `A validation error occurred: ${validationError}`);
+            const prettyError = z.prettifyError(error);
+            logger.error(error, `A validation error occurred: ${prettyError}`);
             return {
                 body: JSON.stringify({
                     error: {
-                        message: error.message,
+                        message: prettyError,
                         statusText: getReasonPhrase(StatusCodes.BAD_REQUEST),
                     },
                 }),
@@ -116,8 +115,8 @@ export async function eventBridgeHandler(
         } else if (error instanceof HumanReadableSchemaError) {
             logger.error(error, `A schema validation error occurred: ${error.message}`);
         } else if (error instanceof ZodError) {
-            const validationError = fromZodError(error);
-            logger.error(error, `A validation error occurred: ${validationError}`);
+            const prettyError = z.prettifyError(error);
+            logger.error(error, `A validation error occurred: ${prettyError}`);
         } else if (error instanceof Error) {
             logger.error(error, `An unexpected error occurred: ${error.message}`);
         } else {
