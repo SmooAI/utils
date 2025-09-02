@@ -1,5 +1,11 @@
 # @smooai/utils
 
+## 1.3.0
+
+### Minor Changes
+
+- e23b67d: Upgrade from zod 3 to zod 4.
+
 ## 1.2.27
 
 ### Patch Changes

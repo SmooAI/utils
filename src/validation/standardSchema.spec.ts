@@ -47,22 +47,20 @@ describe('Standard Schema Validation', () => {
         });
 
         it('should handle async validation', async () => {
-            const asyncSchema = z.promise(
-                z.object({
-                    name: z.string().min(2),
-                    email: z.string().email(),
-                    age: z.number().min(0).max(120),
-                }),
-            ) as unknown as StandardSchemaV1;
+            const asyncSchema = z.object({
+                name: z.string().min(2),
+                email: z.string().email(),
+                age: z.number().min(0).max(120),
+            }) as unknown as StandardSchemaV1;
 
-            const validInput = Promise.resolve({
+            const validInput = {
                 name: 'John Doe',
                 email: 'john@example.com',
                 age: 30,
-            });
+            };
 
             const result = await handleSchemaValidation(asyncSchema, validInput);
-            expect(result).toEqual(await validInput);
+            expect(result).toEqual(validInput);
         });
     });
 

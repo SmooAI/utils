@@ -89,7 +89,14 @@ describe('sqsHandler', () => {
             Records: [createMockSQSRecord('msg1', JSON.stringify({ test: 'data' }))],
         };
 
-        const zodError = new ZodError([]);
+        const zodError = new ZodError([
+            {
+                code: 'invalid_type',
+                expected: 'string',
+                path: ['name'],
+                message: 'Expected string, received number',
+            },
+        ]);
         mockHandler.mockRejectedValueOnce(zodError);
 
         const handler = await sqsHandler(mockHandler);
