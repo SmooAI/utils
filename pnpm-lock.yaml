@@ -19,8 +19,8 @@ importers:
         specifier: ^5.4.34
         version: 5.4.34
       '@smooai/logger':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.1.1
+        version: 3.1.1
       '@standard-schema/spec':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1241,8 +1241,8 @@ packages:
     peerDependencies:
       typescript: ^5.8.2
 
-  '@smooai/logger@3.1.0':
-    resolution: {integrity: sha512-CCzaaUG6UiGA8gad3MB/ew31BAzUb0Nw+z87xTLZ8Oh0ZGbUYPLiyTN9yPbgZDmROnFjjeo9idmM4g9y54xEew==}
+  '@smooai/logger@3.1.1':
+    resolution: {integrity: sha512-WGjgW7wqwZ2XqcrAOCf237FmR/0bT4Cfb61vhdsaQHX7rxQhSs88VD4SxrNT53KbIcIULuj6z2TaZDCY7TJtwQ==}
     engines: {node: '>=20.0.0'}
 
   '@standard-schema/spec@1.0.0':
@@ -5680,7 +5680,7 @@ snapshots:
     dependencies:
       typescript: 5.8.2
 
-  '@smooai/logger@3.1.0':
+  '@smooai/logger@3.1.1':
     dependencies:
       '@aws-sdk/client-sqs': 3.879.0
       browser-dtector: 4.1.0
