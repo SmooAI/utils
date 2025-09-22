@@ -55,12 +55,12 @@
         "dist/**"
     ],
     "scripts": {
+        "aibranch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
         "build": "pnpm create-entry-points && pnpm exec tsup",
         "check-all": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
         "ci:publish": "pnpm build && pnpm changeset publish",
         "create-entry-points": "pnpm vite-node ./src/scripts/create-entry-points.ts -i \"src/**/*.ts\"",
         "format": "prettier --write \"**/*.{ts,tsx,md,json,js,cjs,mjs}\"",
-        "generate-git-branch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
         "generate-jira-git-branch": "pnpm vite-node ./src/scripts/generate-jira-git-branch.ts",
         "preinstall": "npx only-allow pnpm",
         "lint": "eslint src/",
@@ -75,7 +75,7 @@
         "@oclif/core": "^2.0.0",
         "@oclif/plugin-help": "^6.2.26",
         "@oclif/plugin-plugins": "^5.4.34",
-        "@smooai/logger": "^3.1.1",
+        "@smooai/logger": "^3.1.2",
         "@standard-schema/spec": "^1.0.0",
         "@standard-schema/utils": "^0.3.0",
         "find-up": "^7.0.0",
