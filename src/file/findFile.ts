@@ -1,5 +1,5 @@
-import Logger from '@smooai/logger/Logger';
 import { findUp, findUpSync } from 'find-up';
+import Logger from '@smooai/logger/Logger';
 
 const logger = new Logger({ name: 'findFile' });
 

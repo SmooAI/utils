@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import ServerLogger from '@smooai/logger/AwsServerLogger';
 import { z, ZodError } from 'zod';
+import ServerLogger from '@smooai/logger/AwsServerLogger';
 
 const logger = new ServerLogger();
 

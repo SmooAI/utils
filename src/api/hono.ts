@@ -1,6 +1,5 @@
 import { isRunningLocally } from '@/env';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import AwsServerLogger from '@smooai/logger/AwsServerLogger';
 import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
 import { Hono } from 'hono';
 import { handle, LambdaContext, LambdaEvent } from 'hono/aws-lambda';
@@ -9,6 +8,7 @@ import { logger as honoLogger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
 import { requestId } from 'hono/request-id';
 import { z, ZodError } from 'zod';
+import AwsServerLogger from '@smooai/logger/AwsServerLogger';
 
 const logger = new AwsServerLogger();
 
