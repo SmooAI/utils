@@ -216,7 +216,6 @@
 ### Patch Changes
 
 - 3d2006b: Add Standard Schema validation utilities
-
     - Introduced `handleSchemaValidation` for type-safe validation with human-readable error messages.
     - Added `formatStandardSchemaErrorToHumanReadable` to format validation issues.
     - Created `HumanReadableSchemaError` class to wrap schema errors with user-friendly messages.

@@ -3,25 +3,43 @@
     "version": "1.3.2",
     "description": "A collection of shared utilities and tools used across SmooAI projects. This package provides common functionality to standardize and simplify development across all SmooAI repositories.",
     "keywords": [
-        "utils",
-        "tools",
         "aws-lambda",
         "hono",
-        "smooai"
+        "smooai",
+        "tools",
+        "utils"
     ],
     "homepage": "https://github.com/SmooAI/utils#readme",
     "bugs": {
         "url": "https://github.com/SmooAI/utils/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/SmooAI/utils.git"
     },
     "license": "MIT",
     "author": {
         "name": "SmooAI",
         "email": "brent@smooai.com",
         "url": "https://smooai.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SmooAI/utils.git"
+    },
+    "bin": {
+        "create-entry-points": "./dist/scripts/create-entry-points.js",
+        "generate-git-branch": "./dist/scripts/generate-git-branch.js",
+        "generate-jira-git-branch": "./dist/scripts/generate-jira-git-branch.js"
+    },
+    "files": [
+        "dist/**"
+    ],
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/*"
+            ]
+        }
     },
     "exports": {
         ".": {
@@ -36,24 +54,9 @@
             "require": "./dist/*.js"
         }
     },
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "typesVersions": {
-        "*": {
-            "*": [
-                "./dist/*"
-            ]
-        }
+    "publishConfig": {
+        "access": "public"
     },
-    "bin": {
-        "create-entry-points": "./dist/scripts/create-entry-points.js",
-        "generate-git-branch": "./dist/scripts/generate-git-branch.js",
-        "generate-jira-git-branch": "./dist/scripts/generate-jira-git-branch.js"
-    },
-    "files": [
-        "dist/**"
-    ],
     "scripts": {
         "aibranch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
         "build": "pnpm create-entry-points && pnpm exec tsup",
@@ -64,7 +67,7 @@
         "generate-jira-git-branch": "pnpm vite-node ./src/scripts/generate-jira-git-branch.ts",
         "preinstall": "npx only-allow pnpm",
         "lint": "oxlint .",
-        "lint:fix": "eslint src/ --fix",
+        "lint:fix": "oxlint --fix src/",
         "pre-commit-check": "(zsh .husky/pre-commit)",
         "prepare": "husky",
         "test": "vitest run --passWithNoTests",
@@ -97,20 +100,17 @@
         "jira-client": "^8.2.2",
         "lint-staged": "^15.4.3",
         "openai": "^5.15.0",
+        "oxfmt": "^0.28.0",
+        "oxlint": "^0.16.0",
         "picocolors": "^1.1.1",
         "tsup": "^8.4.0",
         "vite": "^6.2.4",
         "vite-node": "^3.1.1",
         "vite-tsconfig-paths": "^5.1.4",
-        "vitest": "^3.1.1",
-        "oxlint": "^0.16.0",
-        "oxfmt": "^0.28.0"
+        "vitest": "^3.1.1"
     },
-    "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3",
     "engines": {
         "node": ">=20.0.0"
     },
-    "publishConfig": {
-        "access": "public"
-    }
+    "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3"
 }

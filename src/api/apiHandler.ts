@@ -2,10 +2,10 @@
 import { ApiError } from '@/api/ApiError';
 import { errorHandler } from '@/error/errorHandler';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import ServerLogger from '@smooai/logger/AwsServerLogger';
 import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2, Context, EventBridgeEvent } from 'aws-lambda';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { z, ZodError } from 'zod';
+import ServerLogger from '@smooai/logger/AwsServerLogger';
 
 const logger = new ServerLogger();
 

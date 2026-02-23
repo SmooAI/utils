@@ -1,8 +1,8 @@
 import { ApiError } from '@/api/ApiError';
 import { HumanReadableSchemaError } from '@/validation/standardSchema';
-import ServerLogger from '@smooai/logger/AwsServerLogger';
 import type { Context, SQSBatchItemFailure, SQSBatchResponse, SQSEvent, SQSRecord } from 'aws-lambda';
 import { z, ZodError } from 'zod';
+import ServerLogger from '@smooai/logger/AwsServerLogger';
 
 const logger = new ServerLogger();
 
