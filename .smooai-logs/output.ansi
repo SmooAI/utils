@@ -267,3 +267,185 @@
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn API error occurred: Status: 400 (undefined); Message: Bad Request[39m[22m",
+  "time": "[34m2026-04-27T20:32:31.347Z[39m",
+  "error": "Bad Request",
+  "errorDetails": [
+    {
+      "message": "Bad Request",
+      "name": "Error",
+      "stack": "Error: Bad Request\n    at /Users/brentrager/dev/smooai/utils/src/api/sqsHandler.spec.ts:51:22\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)",
+      "status": 400
+    }
+  ],
+  "@message": "An API error occurred: Status: 400 (undefined); Message: Bad Request",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-04-27T20:32:31.347Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/Users/brentrager/dev/smooai/utils/src/api/sqsHandler.ts:21:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "59d871df-cdc8-4b18-a184-aab14b929dbf",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "59d871df-cdc8-4b18-a184-aab14b929dbf",
+  "traceId": "59d871df-cdc8-4b18-a184-aab14b929dbf"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mA schema validation error occurred: Invalid schema at \"test\"[39m[22m",
+  "time": "[34m2026-04-27T20:32:31.350Z[39m",
+  "error": "Invalid schema at \"test\"",
+  "errorDetails": [
+    {
+      "message": "Invalid schema at \"test\"",
+      "name": "HumanReadableSchemaError",
+      "schemaError": {
+        "issues": [
+          {
+            "message": "Invalid schema",
+            "path": [
+              "test"
+            ]
+          }
+        ],
+        "message": "Invalid schema",
+        "name": "SchemaError",
+        "stack": "SchemaError: Invalid schema\n    at /Users/brentrager/dev/smooai/utils/src/api/sqsHandler.spec.ts:62:25\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+      },
+      "stack": "HumanReadableSchemaError: Invalid schema at \"test\"\n    at /Users/brentrager/dev/smooai/utils/src/api/sqsHandler.spec.ts:63:32\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+    }
+  ],
+  "@message": "A schema validation error occurred: Invalid schema at \"test\"",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-04-27T20:32:31.350Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/Users/brentrager/dev/smooai/utils/src/api/sqsHandler.ts:23:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "e0144285-7c21-463f-8862-b6a20717bb61",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "e0144285-7c21-463f-8862-b6a20717bb61",
+  "traceId": "e0144285-7c21-463f-8862-b6a20717bb61"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mA validation error occurred: ✖ Expected string, received number\n  → at name[39m[22m",
+  "time": "[34m2026-04-27T20:32:31.351Z[39m",
+  "@message": "A validation error occurred: ✖ Expected string, received number\n  → at name",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-04-27T20:32:31.351Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/Users/brentrager/dev/smooai/utils/src/api/sqsHandler.ts:26:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "context": {
+    "message": "[\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Expected string, received number\"\n  }\n]",
+    "name": "ZodError"
+  },
+  "correlationId": "26f37644-faf5-4bc4-9d8e-763ee2172f6b",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "26f37644-faf5-4bc4-9d8e-763ee2172f6b",
+  "traceId": "26f37644-faf5-4bc4-9d8e-763ee2172f6b"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn unexpected error occurred: General error[39m[22m",
+  "time": "[34m2026-04-27T20:32:31.351Z[39m",
+  "error": "General error",
+  "errorDetails": [
+    {
+      "message": "General error",
+      "name": "Error",
+      "stack": "Error: General error\n    at /Users/brentrager/dev/smooai/utils/src/api/sqsHandler.spec.ts:92:19\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+    }
+  ],
+  "@message": "An unexpected error occurred: General error",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-04-27T20:32:31.351Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/Users/brentrager/dev/smooai/utils/src/api/sqsHandler.ts:28:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "640bf98c-f959-45c2-8f33-381e582c5eed",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "640bf98c-f959-45c2-8f33-381e582c5eed",
+  "traceId": "640bf98c-f959-45c2-8f33-381e582c5eed"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
