@@ -449,3 +449,47 @@
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn API error occurred: Status: 400 (undefined); Message: Bad Request[39m[22m",
+  "time": "[34m2026-04-27T20:33:43.531Z[39m",
+  "error": "Bad Request",
+  "errorDetails": [
+    {
+      "message": "Bad Request",
+      "name": "Error",
+      "stack": "Error: Bad Request\n    at /Users/brentrager/dev/smooai/utils/src/api/sqsHandler.spec.ts:51:22\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///Users/brentrager/dev/smooai/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)",
+      "status": 400
+    }
+  ],
+  "@message": "An API error occurred: Status: 400 (undefined); Message: Bad Request",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-04-27T20:33:43.531Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/Users/brentrager/dev/smooai/utils/src/api/sqsHandler.ts:21:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "93660c7b-30f5-4938-b13b-1265626d6b9a",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "93660c7b-30f5-4938-b13b-1265626d6b9a",
+  "traceId": "93660c7b-30f5-4938-b13b-1265626d6b9a"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
