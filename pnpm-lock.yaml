@@ -19,8 +19,8 @@ importers:
         specifier: ^5.4.34
         version: 5.4.34
       '@smooai/logger':
-        specifier: ^3.1.2
-        version: 3.1.2
+        specifier: ^4.1.4
+        version: 4.1.4
       '@standard-schema/spec':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1107,9 +1107,10 @@ packages:
     peerDependencies:
       typescript: ^5.8.2
 
-  '@smooai/logger@3.1.2':
-    resolution: {integrity: sha512-8vdExXzswbr5wnzs++u9ZI/NAbTuz9A/iFPoPNNzZgNlXeFujPEA7ZvSCF6q57PfEdjvDRMTeF00/2dseQDCDQ==}
+  '@smooai/logger@4.1.4':
+    resolution: {integrity: sha512-ub+dYF38oE8Ke3BNz1FmpfjlCKBOGzf+KQPI4ZIvTu34gckEBG2D7ISxq0Lnp4hN/xMi0v/LRnxjgGiDUtmaZQ==}
     engines: {node: '>=20.0.0'}
+    hasBin: true
 
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
@@ -2486,6 +2487,7 @@ packages:
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -3913,7 +3915,7 @@ snapshots:
     dependencies:
       typescript: 5.8.2
 
-  '@smooai/logger@3.1.2':
+  '@smooai/logger@4.1.4':
     dependencies:
       '@aws-sdk/client-sqs': 3.893.0
       browser-dtector: 4.1.0
