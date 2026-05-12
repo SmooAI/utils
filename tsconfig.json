@@ -5,12 +5,8 @@
         "outDir": "./dist",
         "types": ["node"],
         "target": "ES2022",
-        "baseUrl": "./",
-        "ignoreDeprecations": "5.0",
         "paths": {
-            "@smooai/logger/*": ["../logger/src/*"],
-            "@smooai/utils/*": ["../utils/src/*"],
-            "@/*": ["src/*"]
+            "@/*": ["./src/*"]
         }
     },
     "include": ["./src/**/*.ts", "./src/**/*.tsx", "src/index.ts", "index.ts", "tsup.config.ts"],
