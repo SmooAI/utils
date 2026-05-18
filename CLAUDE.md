@@ -31,7 +31,6 @@ pnpm pre-commit-check     # Quick pre-commit validation
 ### Utility Scripts
 
 ```bash
-pnpm create-entry-points  # Auto-generates tsup config + package.json exports from src/
 pnpm aibranch             # AI-powered git branch naming from Jira ticket
 ```
 
@@ -114,13 +113,7 @@ git branch -d SMOODEV-XX-short-desc
 
 ## 5. Entry Points
 
-This package uses auto-generated entry points. When adding new modules under `src/`, run:
-
-```bash
-pnpm create-entry-points
-```
-
-This regenerates the tsup config and package.json exports map based on the `src/` directory structure.
+Entry points are curated manually. When adding a new exported module under `src/`, add it explicitly to both `tsdown.config.ts` (the `entry` array) and `package.json` (the `exports` map and, if it's a CLI, the `bin` map).
 
 ---
 

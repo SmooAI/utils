@@ -1800,3 +1800,228 @@
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn API error occurred: Status: 400 (undefined); Message: Bad Request[39m[22m",
+  "time": "[34m2026-05-18T20:38:28.907Z[39m",
+  "error": "Bad Request",
+  "errorDetails": [
+    {
+      "message": "Bad Request",
+      "name": "Error",
+      "stack": "Error: Bad Request\n    at /private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.spec.ts:51:22\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)",
+      "status": 400
+    }
+  ],
+  "@message": "An API error occurred: Status: 400 (undefined); Message: Bad Request",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-05-18T20:38:28.907Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.ts:21:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "fe0e734f-01c4-44ca-b965-0eb7d8b88ce3",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "fe0e734f-01c4-44ca-b965-0eb7d8b88ce3",
+  "traceId": "fe0e734f-01c4-44ca-b965-0eb7d8b88ce3"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mA schema validation error occurred: Invalid schema at \"test\"[39m[22m",
+  "time": "[34m2026-05-18T20:38:28.922Z[39m",
+  "error": "Invalid schema at \"test\"",
+  "errorDetails": [
+    {
+      "message": "Invalid schema at \"test\"",
+      "name": "HumanReadableSchemaError",
+      "schemaError": {
+        "issues": [
+          {
+            "message": "Invalid schema",
+            "path": [
+              "test"
+            ]
+          }
+        ],
+        "message": "Invalid schema",
+        "name": "SchemaError",
+        "stack": "SchemaError: Invalid schema\n    at /private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.spec.ts:62:25\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+      },
+      "stack": "HumanReadableSchemaError: Invalid schema at \"test\"\n    at /private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.spec.ts:63:32\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+    }
+  ],
+  "@message": "A schema validation error occurred: Invalid schema at \"test\"",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-05-18T20:38:28.922Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.ts:23:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "4f5df946-052a-4ccd-a44d-3d122bf5b5db",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "4f5df946-052a-4ccd-a44d-3d122bf5b5db",
+  "traceId": "4f5df946-052a-4ccd-a44d-3d122bf5b5db"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mA validation error occurred: ✖ Expected string, received number\n  → at name[39m[22m",
+  "time": "[34m2026-05-18T20:38:28.922Z[39m",
+  "@message": "A validation error occurred: ✖ Expected string, received number\n  → at name",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-05-18T20:38:28.922Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.ts:26:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "context": {
+    "message": "[\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"path\": [\n      \"name\"\n    ],\n    \"message\": \"Expected string, received number\"\n  }\n]",
+    "name": "ZodError"
+  },
+  "correlationId": "b465a131-b516-4f92-9a85-0b340637ff24",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "b465a131-b516-4f92-9a85-0b340637ff24",
+  "traceId": "b465a131-b516-4f92-9a85-0b340637ff24"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn unexpected error occurred: General error[39m[22m",
+  "time": "[34m2026-05-18T20:38:28.923Z[39m",
+  "error": "General error",
+  "errorDetails": [
+    {
+      "message": "General error",
+      "name": "Error",
+      "stack": "Error: General error\n    at /private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.spec.ts:92:19\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+    }
+  ],
+  "@message": "An unexpected error occurred: General error",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-05-18T20:38:28.923Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.ts:28:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "59a5ca7f-e93f-4f98-937e-46aa5a1dbe7f",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg1"
+  },
+  "requestId": "59a5ca7f-e93f-4f98-937e-46aa5a1dbe7f",
+  "traceId": "59a5ca7f-e93f-4f98-937e-46aa5a1dbe7f"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+{
+  "msg": "[1m[32mAn unexpected error occurred: Failed[39m[22m",
+  "time": "[34m2026-05-18T20:38:28.927Z[39m",
+  "error": "Failed",
+  "errorDetails": [
+    {
+      "message": "Failed",
+      "name": "Error",
+      "stack": "Error: Failed\n    at /private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.spec.ts:117:69\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:103:11\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:595:26\n    at file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:877:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:850:10)\n    at runTest (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1345:12)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)\n    at runSuite (file:///private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/node_modules/.pnpm/@vitest+runner@3.1.1/node_modules/@vitest/runner/dist/index.js:1491:8)"
+    }
+  ],
+  "@message": "An unexpected error occurred: Failed",
+  "@requestId": "test-request-id",
+  "@timestamp": "2026-05-18T20:38:28.927Z",
+  "LogLevel": "error",
+  "callerContext": {
+    "loggerName": "AwsServerLogger",
+    "stack": [
+      "/private/var/folders/vn/rbfj_chj6wv_1_5n3vhzz0kw0000gn/T/tmp.slF2eHPFaO/utils/src/api/sqsHandler.ts:28:20",
+      "processTicksAndRejections (node:internal/process/task_queues:105:5)"
+    ]
+  },
+  "correlationId": "2953c5c9-26a8-4bde-9d91-95309b2c26e5",
+  "http": {
+    "request": {
+    }
+  },
+  "lambda": {
+    "requestId": "test-request-id"
+  },
+  "level": 50,
+  "name": "AwsServerLogger",
+  "nodeEnv": "test",
+  "queue": {
+    "messageApproximateReceiveCount": "1",
+    "messageId": "msg2"
+  },
+  "requestId": "2953c5c9-26a8-4bde-9d91-95309b2c26e5",
+  "traceId": "2953c5c9-26a8-4bde-9d91-95309b2c26e5"
+}
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
