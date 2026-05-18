@@ -24,7 +24,6 @@
         "url": "https://github.com/SmooAI/utils.git"
     },
     "bin": {
-        "create-entry-points": "./dist/scripts/create-entry-points.cjs",
         "generate-git-branch": "./dist/scripts/generate-git-branch.cjs",
         "generate-jira-git-branch": "./dist/scripts/generate-jira-git-branch.cjs"
     },
@@ -69,10 +68,9 @@
     },
     "scripts": {
         "aibranch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
-        "build": "pnpm create-entry-points && pnpm exec tsdown",
+        "build": "pnpm exec tsdown",
         "check-all": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
         "ci:publish": "pnpm build && pnpm changeset publish",
-        "create-entry-points": "pnpm vite-node ./src/scripts/create-entry-points.ts -i \"src/**/*.ts\"",
         "format": "oxfmt --write .",
         "generate-jira-git-branch": "pnpm vite-node ./src/scripts/generate-jira-git-branch.ts",
         "preinstall": "npx only-allow pnpm",
@@ -86,9 +84,6 @@
         "format:check": "oxfmt --check ."
     },
     "dependencies": {
-        "@oclif/core": "^2.0.0",
-        "@oclif/plugin-help": "^6.2.26",
-        "@oclif/plugin-plugins": "^5.4.34",
         "@smooai/logger": "^4.1.4",
         "@standard-schema/spec": "^1.0.0",
         "@standard-schema/utils": "^0.3.0",
@@ -105,7 +100,6 @@
         "@types/aws-lambda": "^8.10.119",
         "@types/jira-client": "^7.1.9",
         "@types/node": "^20.13.0",
-        "glob": "^10.3.10",
         "husky": "^9.1.7",
         "jira-client": "^8.2.2",
         "openai": "^5.15.0",
