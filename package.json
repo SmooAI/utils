@@ -24,16 +24,16 @@
         "url": "https://github.com/SmooAI/utils.git"
     },
     "bin": {
-        "create-entry-points": "./dist/scripts/create-entry-points.js",
-        "generate-git-branch": "./dist/scripts/generate-git-branch.js",
-        "generate-jira-git-branch": "./dist/scripts/generate-jira-git-branch.js"
+        "create-entry-points": "./dist/scripts/create-entry-points.cjs",
+        "generate-git-branch": "./dist/scripts/generate-git-branch.cjs",
+        "generate-jira-git-branch": "./dist/scripts/generate-jira-git-branch.cjs"
     },
     "files": [
         "dist/**"
     ],
-    "main": "./dist/index.js",
+    "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
+    "types": "./dist/index.d.mts",
     "typesVersions": {
         "*": {
             "*": [
@@ -43,15 +43,25 @@
     },
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.js",
-            "default": "./dist/index.js"
+            "import": {
+                "types": "./dist/index.d.mts",
+                "default": "./dist/index.mjs"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            },
+            "default": "./dist/index.cjs"
         },
         "./*": {
-            "types": "./dist/*.d.ts",
-            "import": "./dist/*.mjs",
-            "require": "./dist/*.js"
+            "import": {
+                "types": "./dist/*.d.mts",
+                "default": "./dist/*.mjs"
+            },
+            "require": {
+                "types": "./dist/*.d.cts",
+                "default": "./dist/*.cjs"
+            }
         }
     },
     "publishConfig": {
@@ -59,7 +69,7 @@
     },
     "scripts": {
         "aibranch": "pnpm vite-node ./src/scripts/generate-git-branch.ts",
-        "build": "pnpm create-entry-points && pnpm exec tsup",
+        "build": "pnpm create-entry-points && pnpm exec tsdown",
         "check-all": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
         "ci:publish": "pnpm build && pnpm changeset publish",
         "create-entry-points": "pnpm vite-node ./src/scripts/create-entry-points.ts -i \"src/**/*.ts\"",
@@ -72,7 +82,7 @@
         "prepare": "husky",
         "test": "vitest run --passWithNoTests",
         "typecheck": "tsc --noEmit --skipLibCheck",
-        "watch": "tsup --watch",
+        "watch": "tsdown --watch",
         "format:check": "oxfmt --check ."
     },
     "dependencies": {
@@ -102,8 +112,9 @@
         "oxfmt": "^0.28.0",
         "oxlint": "^0.16.0",
         "picocolors": "^1.1.1",
-        "tsup": "^8.4.0",
+        "tsdown": "latest",
         "typescript": "^5.8.2",
+        "unrun": "^0.3.0",
         "vite": "^6.2.4",
         "vite-node": "^3.1.1",
         "vite-tsconfig-paths": "^5.1.4",
