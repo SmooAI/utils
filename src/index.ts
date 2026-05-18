@@ -1,7 +1,6 @@
 export * from './validation/phoneNumber';
 export * from './validation/standardSchema';
 export * from './utils/sleep';
-export * from './scripts/create-entry-points';
 export * from './scripts/generate-git-branch';
 export * from './file/findFile';
 export * from './error/errorHandler';

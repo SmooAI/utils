@@ -9,7 +9,6 @@ export default defineConfig((options: Options) => ({
         'src/utils/sleep.ts',
         'src/scripts/generate-jira-git-branch.ts',
         'src/scripts/generate-git-branch.ts',
-        'src/scripts/create-entry-points.ts',
         'src/file/findFile.ts',
         'src/error/errorHandler.ts',
         'src/env/index.ts',
