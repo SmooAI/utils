@@ -3,7 +3,7 @@ import { Command, Flags } from '@oclif/core';
 import { globSync } from 'glob';
 
 export default class UpdateTsupConfig extends Command {
-    static description = 'Update tsup.config.ts entry field and package.json exports based on provided patterns';
+    static description = 'Update tsdown.config.ts entry field and package.json exports based on provided patterns';
 
     static flags = {
         include: Flags.string({
@@ -28,17 +28,27 @@ export default class UpdateTsupConfig extends Command {
         // Add root exports if src/index.ts exists
         if (files.includes('src/index.ts')) {
             exports['.'] = {
-                types: './dist/index.d.ts',
-                import: './dist/index.mjs',
-                require: './dist/index.js',
-                default: './dist/index.js',
+                import: {
+                    types: './dist/index.d.mts',
+                    default: './dist/index.mjs',
+                },
+                require: {
+                    types: './dist/index.d.cts',
+                    default: './dist/index.cjs',
+                },
+                default: './dist/index.cjs',
             };
         }
 
         exports['./*'] = {
-            types: './dist/*.d.ts',
-            import: './dist/*.mjs',
-            require: './dist/*.js',
+            import: {
+                types: './dist/*.d.mts',
+                default: './dist/*.mjs',
+            },
+            require: {
+                types: './dist/*.d.cts',
+                default: './dist/*.cjs',
+            },
         };
 
         return exports;
@@ -53,11 +63,11 @@ export default class UpdateTsupConfig extends Command {
         try {
             const files = globSync(includePatterns, { ignore: ignorePatterns });
 
-            // Update tsup.config.ts
-            let tsupFile = readFileSync('tsup.config.ts', 'utf-8');
-            tsupFile = tsupFile.replace(/entry: \[[^\]]*\],/, `entry: [${files.map((file) => `'${file}'`).join(',')}],`);
-            writeFileSync('tsup.config.ts', tsupFile);
-            this.log('Updated tsup.config.ts successfully.');
+            // Update tsdown.config.ts
+            let tsdownFile = readFileSync('tsdown.config.ts', 'utf-8');
+            tsdownFile = tsdownFile.replace(/entry: \[[^\]]*\],/, `entry: [${files.map((file) => `'${file}'`).join(',')}],`);
+            writeFileSync('tsdown.config.ts', tsdownFile);
+            this.log('Updated tsdown.config.ts successfully.');
 
             // Update package.json
             const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
@@ -65,9 +75,9 @@ export default class UpdateTsupConfig extends Command {
 
             // If we have src/index.ts, set the main entry points
             if (files.includes('src/index.ts')) {
-                packageJson.main = './dist/index.js';
+                packageJson.main = './dist/index.cjs';
                 packageJson.module = './dist/index.mjs';
-                packageJson.types = './dist/index.d.ts';
+                packageJson.types = './dist/index.d.mts';
             }
 
             packageJson.exports = exports;

@@ -61,9 +61,14 @@ describe('UpdateTsupConfig', () => {
 
             expect(exports).toEqual({
                 './*': {
-                    types: './dist/*.d.ts',
-                    import: './dist/*.mjs',
-                    require: './dist/*.js',
+                    import: {
+                        types: './dist/*.d.mts',
+                        default: './dist/*.mjs',
+                    },
+                    require: {
+                        types: './dist/*.d.cts',
+                        default: './dist/*.cjs',
+                    },
                 },
             });
         });
@@ -74,35 +79,45 @@ describe('UpdateTsupConfig', () => {
 
             expect(exports).toEqual({
                 '.': {
-                    types: './dist/index.d.ts',
-                    import: './dist/index.mjs',
-                    require: './dist/index.js',
-                    default: './dist/index.js',
+                    import: {
+                        types: './dist/index.d.mts',
+                        default: './dist/index.mjs',
+                    },
+                    require: {
+                        types: './dist/index.d.cts',
+                        default: './dist/index.cjs',
+                    },
+                    default: './dist/index.cjs',
                 },
                 './*': {
-                    types: './dist/*.d.ts',
-                    import: './dist/*.mjs',
-                    require: './dist/*.js',
+                    import: {
+                        types: './dist/*.d.mts',
+                        default: './dist/*.mjs',
+                    },
+                    require: {
+                        types: './dist/*.d.cts',
+                        default: './dist/*.cjs',
+                    },
                 },
             });
         });
     });
 
     describe('run', () => {
-        it('should update tsup.config.ts and package.json', async () => {
+        it('should update tsdown.config.ts and package.json', async () => {
             const mockFiles = ['src/example.ts', 'src/utils/helpers.ts'];
-            const mockTsupConfig = 'export default { entry: [], }';
+            const mockTsdownConfig = 'export default { entry: [], }';
             const mockPackageJson = '{"name": "test", "exports": {}}';
 
             (globSync as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockFiles);
-            (readFileSync as unknown as ReturnType<typeof vi.fn>).mockReturnValueOnce(mockTsupConfig).mockReturnValueOnce(mockPackageJson);
+            (readFileSync as unknown as ReturnType<typeof vi.fn>).mockReturnValueOnce(mockTsdownConfig).mockReturnValueOnce(mockPackageJson);
 
             await command.run();
 
             expect(writeFileSync).toHaveBeenCalledTimes(2);
 
-            // Verify tsup.config.ts update
-            expect(writeFileSync).toHaveBeenCalledWith('tsup.config.ts', expect.stringContaining("entry: ['src/example.ts','src/utils/helpers.ts']"));
+            // Verify tsdown.config.ts update
+            expect(writeFileSync).toHaveBeenCalledWith('tsdown.config.ts', expect.stringContaining("entry: ['src/example.ts','src/utils/helpers.ts']"));
 
             // Verify package.json update
             const packageJsonCall = (writeFileSync as unknown as ReturnType<typeof vi.fn>).mock.calls[1][1];
@@ -112,9 +127,14 @@ describe('UpdateTsupConfig', () => {
                 name: 'test',
                 exports: {
                     './*': {
-                        types: './dist/*.d.ts',
-                        import: './dist/*.mjs',
-                        require: './dist/*.js',
+                        import: {
+                            types: './dist/*.d.mts',
+                            default: './dist/*.mjs',
+                        },
+                        require: {
+                            types: './dist/*.d.cts',
+                            default: './dist/*.cjs',
+                        },
                     },
                 },
             });
@@ -122,11 +142,11 @@ describe('UpdateTsupConfig', () => {
 
         it('should set main entry points when src/index.ts exists', async () => {
             const mockFiles = ['src/index.ts', 'src/utils/helpers.ts'];
-            const mockTsupConfig = 'export default { entry: [], }';
+            const mockTsdownConfig = 'export default { entry: [], }';
             const mockPackageJson = '{"name": "test", "exports": {}}';
 
             (globSync as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockFiles);
-            (readFileSync as unknown as ReturnType<typeof vi.fn>).mockReturnValueOnce(mockTsupConfig).mockReturnValueOnce(mockPackageJson);
+            (readFileSync as unknown as ReturnType<typeof vi.fn>).mockReturnValueOnce(mockTsdownConfig).mockReturnValueOnce(mockPackageJson);
 
             await command.run();
 
@@ -136,20 +156,30 @@ describe('UpdateTsupConfig', () => {
 
             expect(updatedPackageJson).toEqual({
                 name: 'test',
-                main: './dist/index.js',
+                main: './dist/index.cjs',
                 module: './dist/index.mjs',
-                types: './dist/index.d.ts',
+                types: './dist/index.d.mts',
                 exports: {
                     '.': {
-                        types: './dist/index.d.ts',
-                        import: './dist/index.mjs',
-                        require: './dist/index.js',
-                        default: './dist/index.js',
+                        import: {
+                            types: './dist/index.d.mts',
+                            default: './dist/index.mjs',
+                        },
+                        require: {
+                            types: './dist/index.d.cts',
+                            default: './dist/index.cjs',
+                        },
+                        default: './dist/index.cjs',
                     },
                     './*': {
-                        types: './dist/*.d.ts',
-                        import: './dist/*.mjs',
-                        require: './dist/*.js',
+                        import: {
+                            types: './dist/*.d.mts',
+                            default: './dist/*.mjs',
+                        },
+                        require: {
+                            types: './dist/*.d.cts',
+                            default: './dist/*.cjs',
+                        },
                     },
                 },
             });
