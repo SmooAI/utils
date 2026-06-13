@@ -1,28 +1,22 @@
 <a name="readme-top"></a>
 
 <p align="center">
-  <a href="https://smoo.ai"><img src="https://smoo.ai/images/logo/logo.svg" alt="Smoo AI" width="220" /></a>
-</p>
-
-<h1 align="center">@smooai/utils</h1>
-
-<p align="center">
-  <strong>Battle-tested TypeScript utilities that eliminate the boilerplate — Lambda handlers, human-readable validation, case-insensitive collections, and more.</strong>
+  <a href="https://smoo.ai"><img src=".github/banner.png" alt="@smooai/utils — TypeScript utilities, zero boilerplate" width="100%" /></a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@smooai/utils"><img src="https://img.shields.io/npm/v/@smooai/utils?style=flat-square&color=00A6A6&label=npm" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/@smooai/utils"><img src="https://img.shields.io/npm/v/@smooai/utils?style=for-the-badge&color=00A6A6&label=npm&logo=npm&logoColor=white&labelColor=020618" alt="npm"></a>
+  <a href="https://smoo.ai"><img src="https://img.shields.io/badge/Smoo_AI-platform-00A6A6?style=for-the-badge&labelColor=020618" alt="Smoo AI"></a>
+  <img src="https://img.shields.io/badge/license-MIT-F49F0A?style=for-the-badge&labelColor=020618" alt="license">
+</p>
+
+<p align="center">
   <a href="https://www.npmjs.com/package/@smooai/utils"><img src="https://img.shields.io/npm/dw/@smooai/utils?style=flat-square&color=F49F0A&label=downloads" alt="downloads"></a>
-  <img src="https://img.shields.io/badge/Smoo_AI-platform-00A6A6?style=flat-square" alt="Smoo AI">
-  <img src="https://img.shields.io/badge/license-MIT-F49F0A?style=flat-square" alt="license">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
 </p>
 
 <p align="center">
-  <a href="#features">Features</a> ·
-  <a href="#install">Install</a> ·
-  <a href="#usage">Usage</a> ·
-  <a href="#part-of-smoo-ai">Platform</a>
+  <a href="#-features"><b>Features</b></a> &nbsp;·&nbsp; <a href="#-install"><b>Install</b></a> &nbsp;·&nbsp; <a href="#-usage"><b>Usage</b></a> &nbsp;·&nbsp; <a href="#-part-of-smoo-ai"><b>Platform</b></a>
 </p>
 
 ---
@@ -268,14 +262,10 @@ pnpm lint
 
 ## 🧩 Part of Smoo AI <a name="part-of-smoo-ai"></a>
 
-@smooai/utils is part of the [Smoo AI](https://smoo.ai) platform — an AI-powered business platform with AI built into every product. It's the shared foundation under our open-source packages.
+`@smooai/utils` is built and open-sourced by **[Smoo AI](https://smoo.ai)** — the AI-powered business platform with AI built into every product: CRM, customer support, campaigns, field service, observability, and developer tools.
 
-- [@smooai/logger](https://github.com/SmooAI/logger) — contextual structured logging
-- [@smooai/fetch](https://github.com/SmooAI/fetch) — typed HTTP with retries
-- [@smooai/file](https://github.com/SmooAI/file) — stream-first file ops with magic-byte validation
-- [@smooai/config](https://github.com/SmooAI/config) — typed config, secrets, and feature flags
-
-Browse the rest at [npmjs.com/org/smooai](https://www.npmjs.com/org/smooai) and [github.com/SmooAI](https://github.com/SmooAI).
+- 🧰 **More open source from Smoo AI** — [smoo.ai/open-source](https://smoo.ai/open-source)
+- 🧩 **Sibling packages** — [@smooai/logger](https://github.com/SmooAI/logger), [@smooai/fetch](https://github.com/SmooAI/fetch), [@smooai/file](https://github.com/SmooAI/file), [@smooai/config](https://github.com/SmooAI/config)
 
 ## 🤝 Contributing <a name="contributing"></a>
 
