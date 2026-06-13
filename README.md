@@ -1,93 +1,62 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-
 <a name="readme-top"></a>
 
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+<p align="center">
+  <a href="https://smoo.ai"><img src="https://smoo.ai/images/logo/logo.svg" alt="Smoo AI" width="220" /></a>
+</p>
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+<h1 align="center">@smooai/utils</h1>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://smoo.ai">
-    <img src="images/logo.png" alt="SmooAI Logo" />
-  </a>
-</div>
+<p align="center">
+  <strong>Battle-tested TypeScript utilities that eliminate the boilerplate — Lambda handlers, human-readable validation, case-insensitive collections, and more.</strong>
+</p>
 
-<!-- ABOUT THE PROJECT -->
+<p align="center">
+  <a href="https://www.npmjs.com/package/@smooai/utils"><img src="https://img.shields.io/npm/v/@smooai/utils?style=flat-square&color=00A6A6&label=npm" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/@smooai/utils"><img src="https://img.shields.io/npm/dw/@smooai/utils?style=flat-square&color=F49F0A&label=downloads" alt="downloads"></a>
+  <img src="https://img.shields.io/badge/Smoo_AI-platform-00A6A6?style=flat-square" alt="Smoo AI">
+  <img src="https://img.shields.io/badge/license-MIT-F49F0A?style=flat-square" alt="license">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+</p>
 
-## About SmooAI
+<p align="center">
+  <a href="#features">Features</a> ·
+  <a href="#install">Install</a> ·
+  <a href="#usage">Usage</a> ·
+  <a href="#part-of-smoo-ai">Platform</a>
+</p>
 
-SmooAI is an AI-powered platform for helping businesses multiply their customer, employee, and developer experience.
+---
 
-Learn more on [smoo.ai](https://smoo.ai)
+> The foundation utilities that power every Smoo AI service. They handle the repetitive infrastructure work — error handling, request tracking, validation, environment detection — so you focus on features. Type-safe, production-tested, zero configuration.
 
-## SmooAI Packages
+## ✨ Features <a name="features"></a>
 
-Check out other SmooAI packages at [npmjs.com/org/smooai](https://www.npmjs.com/org/smooai)
+Stop copy-pasting the same utility functions across projects. One package gives you:
 
-## About @smooai/utils
-
-**The foundation that eliminates boilerplate** - Battle-tested utilities that handle the repetitive tasks so you can focus on building features, not infrastructure.
-
-![NPM Version](https://img.shields.io/npm/v/%40smooai%2Futils?style=for-the-badge)
-![NPM Downloads](https://img.shields.io/npm/dw/%40smooai%2Futils?style=for-the-badge)
-![NPM Last Update](https://img.shields.io/npm/last-update/%40smooai%2Futils?style=for-the-badge)
-
-![GitHub License](https://img.shields.io/github/license/SmooAI/utils?style=for-the-badge)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/SmooAI/utils/release.yml?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/SmooAI/utils?style=for-the-badge)
-
-### Why @smooai/utils?
-
-Ever found yourself writing the same error handler for the 50th time? Debugging Lambda functions without proper request tracking? Wrestling with phone number validation that works everywhere except production? You're not alone.
-
-**We built @smooai/utils because we were tired of:**
-
-- 🔁 Copy-pasting the same utility functions across projects
-- 🐛 Inconsistent error handling breaking production deploys
-- 🔍 Losing request context across AWS services
-- 📱 Phone numbers failing validation in different formats
-- 🗺️ HTTP headers losing their case-sensitivity battles
-- 🎯 Writing custom validators for every data type
-
-**Now, with one package, you get:**
-
-- ✅ Production-tested utilities used across all SmooAI services
+- ✅ Production-tested utilities used across every Smoo AI service
 - ✅ Type-safe implementations with full TypeScript support
 - ✅ AWS Lambda integration that just works
-- ✅ Human-readable error messages your team will thank you for
-- ✅ Zero configuration needed - sensible defaults out of the box
+- ✅ Human-readable error messages your support team will thank you for
+- ✅ Sensible defaults out of the box — no configuration required
 
-### Install
+Concretely, that means a battle-tested Lambda `apiHandler`, schema validation that produces human-readable errors, case-insensitive collections for HTTP headers, production-ready Hono apps for Lambda, file discovery, environment detection, type-safe error handling, async helpers, and global phone-number validation.
+
+## 📦 Install <a name="install"></a>
 
 ```sh
 pnpm add @smooai/utils
 ```
 
-## Real-World Solutions
+## 🚀 Usage <a name="usage"></a>
 
-### 🚀 Lambda Error Handling That Actually Works
+#### 🚀 Lambda error handling
 
-Stop writing try-catch blocks in every Lambda function. Our battle-tested `apiHandler` does it all:
+Stop writing try-catch blocks in every Lambda function. The `apiHandler` wrapper handles parsing, validation, error handling, logging, and response formatting:
 
 ```typescript
 import { apiHandler } from '@smooai/utils';
 
-// Before: Boilerplate everywhere
+// Before: boilerplate everywhere
 export const handler = async (event, context) => {
     try {
         // Parse body
@@ -100,17 +69,17 @@ export const handler = async (event, context) => {
     }
 };
 
-// After: Focus on your logic
+// After: focus on your logic
 export const handler = apiHandler(async (event, context) => {
     const user = await createUser(event.body);
     return { statusCode: 201, body: user };
 });
-// Automatic error handling, logging, and response formatting ✨
+// Automatic error handling, logging, and response formatting
 ```
 
-### 🎯 Validation With Human-Readable Errors
+#### 🎯 Validation with human-readable errors
 
-Your users (and your support team) deserve better than "ValidationError at path[0].nested.field":
+Your users — and your support team — deserve better than `ValidationError at path[0].nested.field`:
 
 ```typescript
 import { handleSchemaValidation, HumanReadableSchemaError } from '@smooai/utils';
@@ -132,7 +101,7 @@ try {
 }
 ```
 
-### 🔍 Case-Insensitive Collections for HTTP Headers
+#### 🔍 Case-insensitive collections for HTTP headers
 
 Because `Content-Type`, `content-type`, and `CONTENT-TYPE` should all just work:
 
@@ -144,14 +113,14 @@ const headers = new CaseInsensitiveMap([
     ['X-API-KEY', 'secret'],
 ]);
 
-headers.get('content-type'); // 'application/json' ✅
-headers.has('X-Api-Key'); // true ✅
-headers.get('CONTENT-TYPE'); // 'application/json' ✅
+headers.get('content-type'); // 'application/json'
+headers.has('X-Api-Key'); // true
+headers.get('CONTENT-TYPE'); // 'application/json'
 ```
 
-### 🏭 Production-Ready Hono Apps for Lambda
+#### 🏭 Production-ready Hono apps for Lambda
 
-Set up a fully-configured API with one line:
+Set up a fully configured API in one line:
 
 ```typescript
 import { createAwsLambdaHonoApp } from '@smooai/utils';
@@ -171,7 +140,7 @@ app.post('/users', async (c) => {
 export const handler = handle(app);
 ```
 
-### 📁 Smart File Discovery
+#### 📁 Smart file discovery
 
 Find configuration files without hardcoding paths:
 
@@ -188,7 +157,7 @@ const packageJson = await findFile('package.json');
 // - Locating test fixtures
 ```
 
-### 🌍 Environment Detection Made Simple
+#### 🌍 Environment detection
 
 ```typescript
 import { isRunningInProd, isRunningLocally } from '@smooai/utils';
@@ -206,9 +175,7 @@ if (isRunningInProd()) {
 }
 ```
 
-## More Powerful Examples
-
-### 🛡️ Type-Safe Error Handling
+#### 🛡️ Type-safe error handling
 
 Transform cryptic errors into actionable messages:
 
@@ -233,7 +200,7 @@ const processPayment = errorHandler(
 );
 ```
 
-### ⏱️ Smart Async Utilities
+#### ⏱️ Async utilities
 
 ```typescript
 import { sleep } from '@smooai/utils';
@@ -257,7 +224,7 @@ async function retryWithBackoff(fn, attempts = 3) {
 }
 ```
 
-### 📞 Phone Number Validation That Works Globally
+#### 📞 Global phone-number validation
 
 ```typescript
 import { validateAndTransformPhoneNumber } from '@smooai/utils';
@@ -268,46 +235,57 @@ const phoneSchema = z.object({
 });
 
 phoneSchema.parse({ phone: '(212) 555-1234' });
-// ✅ { phone: '+12125551234' }
+// { phone: '+12125551234' }
 
 phoneSchema.parse({ phone: '+44 20 7946 0958' });
-// ✅ { phone: '+442079460958' }
+// { phone: '+442079460958' }
 
 phoneSchema.parse({ phone: '555-1234' });
-// ❌ Throws: "Phone must be a valid phone number"
+// Throws: "Phone must be a valid phone number"
 ```
 
-## Built for Production
+## 🔧 Built for production
 
 Every utility in this package is:
 
-- 🔒 **Type-safe** - Full TypeScript support with strict types
-- ⚡ **Performance tested** - Optimized for real-world usage
-- 📊 **Battle-tested** - Used in production at SmooAI
-- 📚 **Well-documented** - Clear examples and use cases
-- 🔄 **Maintained** - Regular updates and improvements
+- 🔒 **Type-safe** — full TypeScript support with strict types
+- ⚡ **Performance tested** — optimized for real-world usage
+- 📊 **Battle-tested** — used in production at Smoo AI
+- 📚 **Well-documented** — clear examples and use cases
+- 🔄 **Maintained** — regular updates and improvements
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Testing
+#### Testing
 
 ```sh
 pnpm test
 ```
 
-### Linting
+#### Linting
 
 ```sh
 pnpm lint
 ```
 
-## Contributing
+## 🧩 Part of Smoo AI <a name="part-of-smoo-ai"></a>
 
-We're currently developing our contribution processes. If you're interested in contributing to this package or have questions, please reach out to us through the contact information below.
+@smooai/utils is part of the [Smoo AI](https://smoo.ai) platform — an AI-powered business platform with AI built into every product. It's the shared foundation under our open-source packages.
 
-<!-- CONTACT -->
+- [@smooai/logger](https://github.com/SmooAI/logger) — contextual structured logging
+- [@smooai/fetch](https://github.com/SmooAI/fetch) — typed HTTP with retries
+- [@smooai/file](https://github.com/SmooAI/file) — stream-first file ops with magic-byte validation
+- [@smooai/config](https://github.com/SmooAI/config) — typed config, secrets, and feature flags
 
-## Contact
+Browse the rest at [npmjs.com/org/smooai](https://www.npmjs.com/org/smooai) and [github.com/SmooAI](https://github.com/SmooAI).
+
+## 🤝 Contributing <a name="contributing"></a>
+
+We're still developing our contribution processes. If you'd like to contribute or have questions, reach out through the contact information below.
+
+## 📄 License <a name="license"></a>
+
+MIT — see [LICENSE](./LICENSE).
+
+## 📬 Contact
 
 Brent Rager
 
@@ -317,29 +295,12 @@ Brent Rager
 - [TikTok](https://www.tiktok.com/@brentragertech)
 - [Instagram](https://www.instagram.com/brentragertech/)
 
-Smoo Github: [https://github.com/SmooAI](https://github.com/SmooAI)
+Smoo GitHub: [https://github.com/SmooAI](https://github.com/SmooAI)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+---
 
-[sst.dev-url]: https://reactjs.org/
-[sst]: https://img.shields.io/badge/sst-EDE1DA?style=for-the-badge&logo=sst&logoColor=E27152
-[sst-url]: https://sst.dev/
-[next]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[next-url]: https://nextjs.org/
-[aws]: https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white
-[aws-url]: https://tailwindcss.com/
-[tailwindcss]: https://img.shields.io/badge/tailwind%20css-0B1120?style=for-the-badge&logo=tailwindcss&logoColor=#06B6D4
-[tailwindcss-url]: https://tailwindcss.com/
-[zod]: https://img.shields.io/badge/zod-3E67B1?style=for-the-badge&logoColor=3E67B1
-[zod-url]: https://zod.dev/
-[sanity]: https://img.shields.io/badge/sanity-F36458?style=for-the-badge
-[sanity-url]: https://www.sanity.io/
-[vitest]: https://img.shields.io/badge/vitest-1E1E20?style=for-the-badge&logo=vitest&logoColor=#6E9F18
-[vitest-url]: https://vitest.dev/
-[pnpm]: https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white
-[pnpm-url]: https://pnpm.io/
-[turborepo]: https://img.shields.io/badge/turborepo-000000?style=for-the-badge&logo=turborepo&logoColor=#EF4444
-[turborepo-url]: https://turbo.build/
+<p align="center">
+  Built by <a href="https://smoo.ai"><strong>Smoo AI</strong></a> — AI built into every product.
+</p>
